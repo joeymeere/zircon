@@ -1,9 +1,12 @@
 "use client"
 
+//@ts-ignore
+import beautify from "prettify-js";
 import { useMonaco } from "@monaco-editor/react";
 import CodeEditor from "./ui/editor";
 import { useEffect, useState } from "react";
 import { runCode } from "@/utils/code/runCode";
+import ConfettiExplosion from "react-confetti-explosion";
 import hljs from "highlight.js";
 import javascript from 'highlight.js/lib/languages/javascript';
 import 'highlight.js/styles/default.css';
@@ -25,11 +28,12 @@ export default function EditorWindow() {
 
     async function getResponse() {
         try {
+            setCorrect(false);
             setLoading(true);
             const response = await runCode(code);
 
             if (response) {
-                setOutput(JSON.stringify(response));
+                setOutput(beautify(response));
 
                 console.log(typeof response)
 
@@ -49,7 +53,7 @@ export default function EditorWindow() {
     }
 
     return (
-        <div className="flex-col gap-2 h-full w-full overflow-y-auto overflow-x-scroll">
+        <div className="flex-col gap-2 h-full w-full overflow-y-auto overflow-x-scroll max-h-screen">
             <div className="flex gap-2 items-center justify-end p-2 bg-zinc-950 rounded-tl-md border-b-2 border-[#E851EB]/50">
                 <button
                     onClick={() => getResponse()}
@@ -64,6 +68,14 @@ export default function EditorWindow() {
                     Submit
                 </button>
             </div>
+            {correct ? (
+                <ConfettiExplosion
+                    force={0.8}
+                    duration={3000}
+                    particleCount={250}
+                    width={1600}
+                />
+            ) : null}
             <div className="grid grid-rows-2 w-full h-full">
                 <div>
                     <CodeEditor monaco={monaco} code={code} setCode={setCode} />
@@ -83,9 +95,9 @@ export default function EditorWindow() {
                                 Clear
                             </button>
                             {output.length > 0 ? (
-                                <div className="flex w-full">
-                                    <pre className="flex w-full h-full mb-0 overflow-hidden">
-                                        <code lang="js" className="font-martian text-xs text-neutral-300 flex w-full js overflow-scroll scrollbar max-h-1/3 flex-col-reverse">{output}</code>
+                                <div className="">
+                                    <pre style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }} className="flex w-full h-full mb-0 overflow-auto break-words">
+                                        <code className="font-martian text-xs text-neutral-300 w-full js overflow-auto scrollbar max-h-1/3 break-words">{output}</code>
                                     </pre>
                                 </div>
                             ) : (

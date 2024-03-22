@@ -1,5 +1,5 @@
 import { TabsDemo } from "@/components/ChallengeTabs";
-import EditorWindow from "@/components/EditorWindow";
+import EditorWindow from "@/components/ChallengeEditorWindow";
 import Header from "@/components/layout/Header";
 import Link from "next/link";
 
