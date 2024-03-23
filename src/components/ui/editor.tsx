@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState, useEffect } from "react";
 import Editor from "@monaco-editor/react";
 
@@ -6,38 +8,6 @@ export default function CodeEditor({
     code,
     setCode
 }: any) {
-    useEffect(() => {
-        if (monaco) {
-            monaco.editor.defineTheme('my-theme', {
-                base: 'vs-dark',
-                inherit: true,
-                "rules": [
-                    {
-                        "foreground": "aeaeae",
-                        "token": "comment"
-                    },
-                    {
-                        "foreground": "FB923C",
-                        "token": "keyword"
-                    },
-                    {
-                        "foreground": "FB923C",
-                        "token": "storage"
-                    },
-                    {
-                        "foreground": "FB923C",
-                        "token": "string"
-                    },
-                ],
-                "colors": {
-                    "editor.background": "#09090B",
-
-                }
-            });
-            monaco.editor.setTheme('default')
-        }
-    }, [monaco, code]);
-    
     const handleChange = (value: any) => {
         setCode(value);
     };
@@ -48,7 +18,7 @@ export default function CodeEditor({
                 width={`100%`}
                 language={"typescript"}
                 value={code}
-                theme="night-dark"
+                theme="onedark"
                 defaultValue={code}
                 onChange={handleChange}
             />

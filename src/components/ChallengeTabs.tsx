@@ -11,15 +11,15 @@ export function TabsDemo() {
             value: "description",
             content: (
                 <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 border border-[#E851EB]/25 font-bold text-white bg-zinc-950/30 backdrop-blur-xl">
-                    <h1 className="font-plex font-bold text-2xl">This is a test challenge!</h1>
+                    <h1 className="font-plex font-bold text-2xl">1. Revolving Balance</h1>
                     <p className="mt-6 font-plex font-normal text-sm text-neutral-300">
-                        This challenge will be simple. All you need to do is write a simple API call to Helius for wallet balance retrieval.
-                        You will need to add your own API key, which you can get{" "}
+                        Given an account, find the balance, send between 1-100 lamports to the address, and return the balance. 
+                        You can either use Web3.js methods, or the Helius API, which can be found here{" "}
                         <Link href="https://helius.dev" className="text-[#E851EB]">here</Link>.
                     </p>
                     <p className="mt-6 font-plex font-normal text-sm text-neutral-500">
                         This challenge requires you use the following wallet:{" "}
-                        <span className="text-neutral-200">7YYZE815j6bE3C1tgiAXKWh4FGwUagpxV9oUw6dgE1mU</span>
+                        <span className="text-neutral-200">32qq3T5NWmkkxaNSWJFTZGjWSEJTPDvCmUT8Z5XNwVk8</span>
                     </p>
                     <p className="mt-6 text-sm font-plex font-semibold text-neutral-300">Once you're ready, click run and see the response!</p>
                 </div>

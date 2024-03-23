@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+const plugin = require('tailwindcss/plugin')
 const svgToDataUri = require("mini-svg-data-uri");
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
@@ -14,6 +15,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      textShadow: {
+        sm: '0 1px 2px var(--tw-shadow-color)',
+        DEFAULT: '0 2px 4px var(--tw-shadow-color)',
+        lg: '0 8px 16px var(--tw-shadow-color)',
+      },
       fontFamily: {
         martian: ['"Martian Mono"', "monospace"],
         plex: ['"IBM Plex Sans"', "sans"],
@@ -27,6 +33,18 @@ const config: Config = {
   },
   plugins: [
     addVariablesForColors,
+    //@ts-ignore
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          //@ts-ignore
+          'text-shadow': (value) => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme('textShadow') }
+      )
+    }),
     function ({ matchUtilities, theme }: any) {
       matchUtilities(
         {

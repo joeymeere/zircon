@@ -5,7 +5,10 @@ const nextConfig = {
     domains: [
       'assets.aceternity.com',
       'firebasestorage.googleapis.com',
-      'www.soldev.app'
+      'www.soldev.app',
+      'avatar.vercel.sh',
+      'arweave.net',
+      'i.imgur.com'
     ]
   }
 };

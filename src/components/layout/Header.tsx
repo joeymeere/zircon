@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import useScroll from "@/lib/hooks/useScroll";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/nav-menu";
+import SolanaAuthButtonFirebase from "../auth/SolanaAuthButtonFirebase";
+import { auth } from "@/firebase";
 
 export function Header() {
     const router = useRouter();
@@ -32,22 +34,24 @@ export function Header() {
                     </Link>
                     <div className="md:flex justify-center space-x-4 hidden text-gray-900 dark:text-white font-plex text-sm">
                         <Menu setActive={setActive}>
-                            <MenuItem setActive={setActive} active={active} item="Challenges">
-                                <div className="flex flex-col space-y-4 text-sm">
-                                    <HoveredLink href="/easy">
-                                        <IconChartBubble size={16} />
-                                        Easy
-                                    </HoveredLink>
-                                    <HoveredLink href="/medium">
-                                        <IconProgressBolt size={16} />
-                                        Medium
-                                    </HoveredLink>
-                                    <HoveredLink href="/hard">
-                                        <IconCode size={16} />
-                                        Hard
-                                    </HoveredLink>
-                                </div>
-                            </MenuItem>
+                            <Link href={"/challenges"} passHref>
+                                <MenuItem setActive={setActive} active={active} item="Challenges">
+                                    <div className="flex flex-col space-y-4 text-sm">
+                                        <HoveredLink href="/easy">
+                                            <IconChartBubble size={16} />
+                                            Easy
+                                        </HoveredLink>
+                                        <HoveredLink href="/medium">
+                                            <IconProgressBolt size={16} />
+                                            Medium
+                                        </HoveredLink>
+                                        <HoveredLink href="/hard">
+                                            <IconCode size={16} />
+                                            Hard
+                                        </HoveredLink>
+                                    </div>
+                                </MenuItem>
+                            </Link>
                             <MenuItem setActive={setActive} active={active} item="Learn">
                                 <div className="text-sm grid grid-cols-2 gap-10 p-4">
                                     <ProductItem
@@ -80,13 +84,7 @@ export function Header() {
                         </Menu>
                     </div>
                     <div className="flex gap-6 justify-end items-center">
-                        <button
-                            className="px-4 md:flex space-x-2 items-center transition ease-in-out delay-110 hover:-translate-y-1 hover:scale-101 rounded-md bg-gradient-to-bl from-[#E40DB5] to-[#E851EB] shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white text-sm font-plex text-white w-fit h-10 justify-center hidden"
-                            onClick={() => setOpen(true)}
-                        >
-                            <IconLogin stroke={1} size={20} />
-                            <span>Sign In</span>
-                        </button>
+                        <SolanaAuthButtonFirebase auth={auth} />
                     </div>
                 </div>
             </nav>
