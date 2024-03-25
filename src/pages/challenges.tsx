@@ -1,13 +1,20 @@
 
-import { EvervaultCardDemo } from "@/components/ChallengeCard";
-import { motion } from "framer-motion";
-import Header from "@/components/layout/Header";
+import { db } from "@/firebase";
 import { Icon } from "@/components/ui/evervault-card";
-import Image from "next/image";
-import { AnimatedPinDemo } from "@/components/PreviewCards";
+import { motion } from "framer-motion";
+import { collection, getDocs } from "firebase/firestore";
 import BentoGridThirdDemo from "@/components/ChallengeGrid";
+import Header from "@/components/layout/Header";
+import Image from "next/image";
+import ChallengeCard from "@/components/ChallengeCard";
+import { Challenge } from "@/interfaces/challenge";
 
-export default function Challenges() {
+interface ChallengesProps {
+    challenges: Challenge[],
+}
+
+export default function Challenges({ challenges }: ChallengesProps) {
+
     return (
         <>
             <Header />
@@ -46,14 +53,17 @@ export default function Challenges() {
                         <div className="w-2/3 relative">
                             <BentoGridThirdDemo />
                             <div className="mt-4 flex-col space-y-4">
-                                <EvervaultCardDemo />
-                                <EvervaultCardDemo />
-                                <EvervaultCardDemo />
-                                <EvervaultCardDemo />
-                                <EvervaultCardDemo />
-                                <EvervaultCardDemo />
-                                <EvervaultCardDemo />
-                                <EvervaultCardDemo />
+                                {challenges?.map((ch) => (
+                                    <ChallengeCard
+                                        key={ch.id}
+                                        id={ch.id}
+                                        data={{
+                                            title: ch.data.title,
+                                            difficulty: ch.data.difficulty,
+                                            tags: ch.data.tags
+                                        }}
+                                    />
+                                ))}
                             </div>
                         </div>
                         <div className="w-1/3 relative flex-col space-y-4">
@@ -85,4 +95,29 @@ export default function Challenges() {
             </div>
         </>
     );
+}
+
+export async function getStaticProps() {
+    let collectionRef = collection(db, "challenges");
+
+    let challengeResponse = await getDocs(collectionRef);
+
+    let challenges = challengeResponse.docs.map((ch) => {
+        return {
+            id: ch.id,
+            data: {
+                ...ch.data(),
+            },
+        };
+    });
+
+    return {
+        props: {
+            challenges: challenges,
+            title: "Challenges | Zircon",
+            description:
+                "Compete, earn XP, and asset yourself as a top Solana developer.",
+            image: "https://i.imgur.com/gzJsDAh.png",
+        },
+    };
 }

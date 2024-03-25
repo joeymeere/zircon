@@ -2,7 +2,16 @@ import React from "react";
 import { EvervaultCard, Icon } from "./ui/evervault-card";
 import Link from "next/link";
 
-export function EvervaultCardDemo() {
+interface ChallengeCard {
+    id: string,
+    data: {
+        title: string,
+        difficulty: string,
+        tags: string[],
+    }
+}
+
+export default function ChallengeCard({ id, data }: ChallengeCard) {
     return (
         <div className="h-fit w-full border border-black/[0.2] dark:border-white/[0.2] bg-zinc-950 flex items-center justify-between max-w-full mx-auto p-4 relative">
             <Icon className="absolute h-6 w-6 -top-3 -left-3 text-neutral-500" />
@@ -28,7 +37,7 @@ export function EvervaultCardDemo() {
             </div>
 
             <div className="flex items-center gap-2 justify-end">
-                <Link href="" passHref>
+                <Link href={`/challenge/${id}`} passHref>
                     <EvervaultCard text="View" className="w-20 h-10 font-plex" />
                 </Link>
             </div>
