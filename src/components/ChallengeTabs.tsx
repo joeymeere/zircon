@@ -26,7 +26,7 @@ export function TabsDemo() {
                         This challenge requires you use the following wallet:{" "}
                         <span className="text-neutral-200">32qq3T5NWmkkxaNSWJFTZGjWSEJTPDvCmUT8Z5XNwVk8</span>
                     </p>
-                    <p className="mt-6 text-sm font-plex font-semibold text-neutral-300">Once you're ready, click run and see the response!</p>
+                    <p className="mt-6 text-sm font-plex font-semibold text-neutral-300">Once you&lsquo;re ready, click run and see the response!</p>
                 </div>
             ),
         },
