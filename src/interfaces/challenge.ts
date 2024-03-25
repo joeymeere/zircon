@@ -4,6 +4,7 @@ export interface Challenge {
         title: string,
         shortDesc: string,
         description: string,
+        hints: string[],
         tags: string[],
         difficulty: string,
         solutionAttributes: {

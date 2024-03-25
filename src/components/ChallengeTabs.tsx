@@ -1,10 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import { Tabs } from "./ui/shuffling-tabs";
-import Link from "next/link";
 
-export function TabsDemo() {
+interface ChallengeTabsProps {
+    id: string,
+    title: string,
+    description: string
+    difficulty: string
+}
+
+export default function ChallengeTabs({ id, title, description, difficulty }: ChallengeTabsProps) {
     const tabs = [
         {
             title: "Description",
@@ -12,21 +17,15 @@ export function TabsDemo() {
             content: (
                 <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 border border-[#E851EB]/25 font-bold text-white bg-zinc-950/30 backdrop-blur-xl">
                     <div className="flex items-center justify-between">
-                        <h1 className="font-plex font-bold text-2xl">1. Revolving Balance</h1>
-                        <p className="text-sm font-plex border font-light dark:border-green-500/[0.2] border-green-500/[0.2] rounded-full text-green-500 px-2 py-0.5">
-                            Easy
+                        <h1 className="font-plex font-bold text-2xl">{id}. {title}</h1>
+                        <p className={`text-sm font-plex border font-light rounded-full ${difficulty == "Easy" ? "text-green-500 border-green-500/[0.2]" : difficulty == "Medium" ? "text-orange-500 border-orange-500/[0.2]" : "text-red-500 border-red-500/[0.2]"} px-2 py-0.5`}>
+                            {difficulty}
                         </p>
                     </div>
-                    <p className="mt-6 font-plex font-normal text-sm text-neutral-300">
-                        Given an account, find the balance, send between 1-100 lamports to the address, and return the balance.
-                        You can either use Web3.js methods, or the Helius API, which can be found here{" "}
-                        <Link href="https://helius.dev" className="text-[#E851EB]">here</Link>.
-                    </p>
-                    <p className="mt-6 font-plex font-normal text-sm text-neutral-500">
-                        This challenge requires you use the following wallet:{" "}
-                        <span className="text-neutral-200">32qq3T5NWmkkxaNSWJFTZGjWSEJTPDvCmUT8Z5XNwVk8</span>
-                    </p>
-                    <p className="mt-6 text-sm font-plex font-semibold text-neutral-300">Once you&lsquo;re ready, click run and see the response!</p>
+                    <article
+                      className="mt-6 overflow-hidden font-plex text-base prose prose-neutral prose-p:text-neutral-400 prose-p:font-light dark:prose-li:text-neutral-500 dark:prose-ol:text-neutral-500 dark:prose-a:text-pink-400"
+                      dangerouslySetInnerHTML={{ __html: description }}
+                    />
                 </div>
             ),
         },

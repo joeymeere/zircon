@@ -1,6 +1,6 @@
-import { TabsDemo } from "@/components/ChallengeTabs";
 import EditorWindow from "@/components/ChallengeEditorWindow";
 import Header from "@/components/layout/Header";
+import TestTabs from "@/components/test/TestTabs";
 
 export default function Test() {
     const hints = [
@@ -18,20 +18,7 @@ export default function Test() {
                     <section className="flex gap-4 w-full h-full">
                         <section className="w-1/2 h-full">
                             <div className="mx-4 p-4 shadow-md">
-                                <TabsDemo />
-                                {/*
-                        <h1 className="font-martian font-bold text-2xl">This is a test challenge!</h1>
-                        <p className="mt-6 font-martian font-normal text-sm text-neutral-500">
-                            This challenge will be simple. All you need to do is write a simple API call to Helius for wallet balance retrieval. 
-                            You will need to add your own API key, which you can get{" "}
-                            <Link href="https://helius.dev" className="text-[#E851EB]">here</Link>.
-                        </p>
-                        <p className="mt-6 font-martian font-normal text-sm text-neutral-500">
-                            This challenge requires you use the following wallet:{" "}
-                            <span className="text-neutral-200">7YYZE815j6bE3C1tgiAXKWh4FGwUagpxV9oUw6dgE1mU</span>
-                        </p>
-                        <p className="mt-6 font-martian font-semibold text-neutral-300">Once you're ready, click run and see the response!</p>
-    */}
+                               <TestTabs />
                             </div>
                         </section>
                         <section className="absolute top-0 right-0 w-1/2 h-full">
