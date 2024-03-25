@@ -22,12 +22,12 @@ export function Hero() {
                     }}
                     className="mt-8 bg-gradient-to-br from-white to-white/25 py-4 pt-64 bg-clip-text text-center text-4xl font-bold font-plex tracking-tight text-transparent md:text-7xl"
                 >
-                    Prove Your Solana
+                    Level Up Your Solana
                     <br></br>
-                    Skillset
+                    Development
                 </motion.h1>
                 <p className="w-9/12 mt-2 font-plex font-medium text-lg text-center text-neutral-500 relative z-20">
-                    Assert yourself as a top developer on Solana with challenges designed for all different skill-levels.
+                    Follow courses, and assert yourself as a top developer with challenges designed for a variety of skill-levels.
                 </p>
                 <div className="mt-6 flex gap-3 items-center">
                     <Link href={"/challenge/test"}>

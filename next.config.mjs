@@ -8,7 +8,8 @@ const nextConfig = {
       'www.soldev.app',
       'avatar.vercel.sh',
       'arweave.net',
-      'i.imgur.com'
+      'i.imgur.com',
+      'pbs.twimg.com'
     ]
   }
 };

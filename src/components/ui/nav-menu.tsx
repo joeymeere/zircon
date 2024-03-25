@@ -28,7 +28,7 @@ export const MenuItem = ({
     <div onMouseEnter={() => setActive(item)} className="relative font-poppins">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white hover:bg-gradient-to-tr hover:from-[#84A6FF]/25 hover:to-[#E851EB]/25 p-3 rounded-md"
+        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white hover:bg-gradient-to-tr from-[#E40DB5]/25 to-[#E851EB]/25 p-3 rounded-md"
       >
         {item}
       </motion.p>
@@ -89,7 +89,7 @@ export const ProductItem = ({
   src: string;
 }) => {
   return (
-    <Link href={href} className="flex space-x-2 hover:bg-gradient-to-tr hover:from-[#84A6FF]/25 hover:to-[#E851EB]/25 p-2 rounded-md">
+    <Link href={href} className="flex space-x-2 hover:bg-gradient-to-tr from-[#E40DB5]/25 to-[#E851EB]/25 p-2 rounded-md">
       <Image
         src={src}
         width={140}
@@ -113,7 +113,7 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <Link
       {...rest}
-      className="flex gap-2 items-center text-neutral-200 hover:text-white font-poppins hover:bg-gradient-to-tr hover:from-[#84A6FF]/25 hover:to-[#E851EB]/25 p-2 rounded-md"
+      className="flex gap-2 items-center text-neutral-200 hover:text-white font-poppins hover:bg-gradient-to-tr from-[#E40DB5]/25 to-[#E851EB]/25 p-2 rounded-md"
     >
       {children}
     </Link>

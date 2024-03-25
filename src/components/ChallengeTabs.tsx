@@ -11,9 +11,14 @@ export function TabsDemo() {
             value: "description",
             content: (
                 <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 border border-[#E851EB]/25 font-bold text-white bg-zinc-950/30 backdrop-blur-xl">
-                    <h1 className="font-plex font-bold text-2xl">1. Revolving Balance</h1>
+                    <div className="flex items-center justify-between">
+                        <h1 className="font-plex font-bold text-2xl">1. Revolving Balance</h1>
+                        <p className="text-sm font-plex border font-light dark:border-green-500/[0.2] border-green-500/[0.2] rounded-full text-green-500 px-2 py-0.5">
+                            Easy
+                        </p>
+                    </div>
                     <p className="mt-6 font-plex font-normal text-sm text-neutral-300">
-                        Given an account, find the balance, send between 1-100 lamports to the address, and return the balance. 
+                        Given an account, find the balance, send between 1-100 lamports to the address, and return the balance.
                         You can either use Web3.js methods, or the Helius API, which can be found here{" "}
                         <Link href="https://helius.dev" className="text-[#E851EB]">here</Link>.
                     </p>
