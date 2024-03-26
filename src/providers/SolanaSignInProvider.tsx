@@ -91,7 +91,8 @@ export const SolanaSignInProvider: FC<SolanaSignInProviderProps> = ({
             console.error(error);
             toast({
                 title: "An Error Occurred.",
-                description: `${error?.message}`
+                description: `${error?.message}`,
+                className: 'bg-zinc-950'
             });
         }
     }, [callbackUrl, domain, onAuthCallback, publicKey, requestUrl, signMessage]);
@@ -116,8 +117,9 @@ export const SolanaSignInProvider: FC<SolanaSignInProviderProps> = ({
 
                         if (!shown) {
                             toast({
-                                title: `Welcome ${document.data().username}!`,
-                                description: `We're glad you're here.`
+                                title: `💎 Welcome ${document.data().username}!`,
+                                description: `We're glad you're here.`,
+                                className: 'bg-zinc-950'
                             });
                             setShown(true);
                         }

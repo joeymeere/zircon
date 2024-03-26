@@ -127,7 +127,7 @@ const qptua = (qp: string | string[]) =>
 const parsePayload = (pl: string): { nonce: string; domain: string } => {
   const nonce = pl.substring(pl.indexOf("id=") + 3);
 
-  let msg = "Sign this message to sign into ";
+  let msg = "Welcome to Zircon💎!\n\nSign the following nonce to verify:";
   if (pl.indexOf(msg) !== 0)
     throw new Error(
       "Incorrect message format sent from the client. Cannot verify nonce or domain."
