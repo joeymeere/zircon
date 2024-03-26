@@ -142,7 +142,7 @@ export const SolanaSignInProvider: FC<SolanaSignInProviderProps> = ({
                             //@ts-ignore
                             username: devCard && Object.keys(devCard).length > 0 ? devCard.name : randomName,
                             location: "localhost:3000",
-                            points: 10,
+                            xp: 10,
                             timestamp: Date.now() / 1000,
                             verified: false,
                         });

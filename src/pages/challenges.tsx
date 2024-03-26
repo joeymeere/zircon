@@ -11,6 +11,7 @@ import { Challenge } from "@/interfaces/challenge";
 
 interface ChallengesProps {
     challenges: Challenge[],
+    users: any,
 }
 
 export default function Challenges({ challenges }: ChallengesProps) {
@@ -21,9 +22,9 @@ export default function Challenges({ challenges }: ChallengesProps) {
             <div className="h-[50rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.1] bg-grid-black/[0.2] relative">
                 <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
                 <main
-                    className={`flex min-h-screen flex-col items-center pt-24 px-10`}
+                    className={`max-w-[1920px] mx-auto flex min-h-screen flex-col items-center pt-24 px-10`}
                 >
-                    <section className="mx-auto flex-col items-center justify-center mb-12 w-full relative">
+                    <section className="mx-auto flex-col items-center justify-center mb-24 w-full relative">
                         <motion.h1
                             initial={{ opacity: 0.5, y: 100 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -76,6 +77,7 @@ export default function Challenges({ challenges }: ChallengesProps) {
                                 <h3 className="text-2xl font-plex font-semibold">Top Builders</h3>
 
                                 <div className="mt-6 flex-col space-y-4">
+
                                     <div className="relative flex items-center justify-between bg-zinc-950 p-4 w-full h-full rounded-md border border-white/[0.2]">
                                         <div className="flex items-center gap-2">
                                             <Image src="https://i.imgur.com/YTluGB5.png" alt="PFP" width={30} height={30} className="w-8 h-8 rounded-full" />
@@ -111,9 +113,23 @@ export async function getStaticProps() {
         };
     });
 
+    let usersRef = collection(db, "challenges");
+
+    let usersResponse = await getDocs(usersRef);
+
+    let users = usersResponse.docs.map((ch) => {
+        return {
+            id: ch.id,
+            data: {
+                ...ch.data(),
+            },
+        };
+    });
+
     return {
         props: {
             challenges: challenges,
+            users: users,
             title: "Challenges | Zircon",
             description:
                 "Compete, earn XP, and asset yourself as a top Solana developer.",
