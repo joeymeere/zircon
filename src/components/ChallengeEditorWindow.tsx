@@ -84,7 +84,7 @@ export default function EditorWindow({ hints }: EditorWindowProps) {
     }
 
     return (
-        <div className="flex-col gap-2 h-full w-full overflow-y-auto overflow-x-scroll max-h-screen">
+        <div className="flex-col gap-2 h-full w-full overflow-y-auto overflow-x-scroll max-h-screen no-visible-scrollbar">
             <div className="flex gap-2 items-center justify-end p-2 bg-zinc-950 rounded-tl-md border-b-2 border-[#E851EB]/50">
                 <button
                     onClick={() => getResponse()}

@@ -19,15 +19,15 @@ export function Hero() {
                     }}
                     className="mt-8 bg-gradient-to-br from-white to-white/25 py-4 pt-64 bg-clip-text text-center text-4xl font-bold font-plex tracking-tight text-transparent md:text-7xl"
                 >
-                    Level Up Your Solana
+                    Go From Zero To
                     <br></br>
-                    Development
+                    Solana Hero
                 </motion.h1>
                 <p className="w-9/12 mt-2 font-plex font-medium text-lg text-center text-neutral-500 relative z-20">
-                    Follow courses, and assert yourself as a top developer with challenges designed for a variety of skill-levels.
+                    Complete guided courses, and conquer challenges designed for a variety of skill-levels.
                 </p>
                 <div className="mt-6 flex gap-3 items-center">
-                    <Link href={"/challenge/test"}>
+                    <Link href={"/challenges"}>
                         <button className="relative inline-flex h-12 overflow-hidden rounded-md p-[2px]">
                             <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#E40DB5_50%,#E2CBFF_100%)]" />
                             <span className="inline-flex gap-2 h-full w-full cursor-pointer items-center justify-center rounded-md bg-zinc-950 px-3 py-1 text-sm font-plex font-semibold text-neutral-300 backdrop-blur-3xl">

@@ -8,6 +8,7 @@ import Header from "@/components/layout/Header";
 import Image from "next/image";
 import ChallengeCard from "@/components/ChallengeCard";
 import { Challenge } from "@/interfaces/challenge";
+import SEO from "@/components/SEO";
 
 interface ChallengesProps {
     challenges: Challenge[],
@@ -18,6 +19,11 @@ export default function Challenges({ challenges, users }: ChallengesProps) {
 
     return (
         <>
+            <SEO
+                title="Challenges | Zircon"
+                description="Conquer Solana developer challenges designed for a variety of skill levels, and climb to the top of the leaderboard."
+                image="https://firebasestorage.googleapis.com/v0/b/zircon-ac0b5.appspot.com/o/og.png?alt=media&token=3778e2a6-5194-466e-a5f3-39bae8a3cba3"
+            />
             <Header />
             <div className="h-[50rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.1] bg-grid-black/[0.2] relative">
                 <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
