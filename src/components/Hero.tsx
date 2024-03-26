@@ -1,9 +1,6 @@
 "use client";
-import { cn } from "@/utils/cn";
 import React from "react";
-import { Boxes } from "./ui/background-boxes";
 import { LampContainer } from "./ui/lamp";
-import Header from "./layout/Header";
 import { motion } from "framer-motion";
 import { IconBolt, IconSchool } from "@tabler/icons-react";
 import Link from "next/link";

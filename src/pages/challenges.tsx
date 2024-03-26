@@ -14,7 +14,7 @@ interface ChallengesProps {
     users: any,
 }
 
-export default function Challenges({ challenges }: ChallengesProps) {
+export default function Challenges({ challenges, users }: ChallengesProps) {
 
     return (
         <>
@@ -77,18 +77,19 @@ export default function Challenges({ challenges }: ChallengesProps) {
                                 <h3 className="text-2xl font-plex font-semibold">Top Builders</h3>
 
                                 <div className="mt-6 flex-col space-y-4">
-
-                                    <div className="relative flex items-center justify-between bg-zinc-950 p-4 w-full h-full rounded-md border border-white/[0.2]">
-                                        <div className="flex items-center gap-2">
-                                            <Image src="https://i.imgur.com/YTluGB5.png" alt="PFP" width={30} height={30} className="w-8 h-8 rounded-full" />
-                                            <p className="font-plex font-medium">Name</p>
+                                    {users.map((user: any, i: number) => (
+                                        <div key={i} className="relative flex items-center justify-between bg-zinc-950 p-4 w-full h-full rounded-md border border-white/[0.2]">
+                                            <div className="flex items-center gap-2">
+                                                <Image src={user.data.image} alt="PFP" width={30} height={30} className="w-8 h-8 rounded-full" />
+                                                <p className="font-plex font-medium">{user.data.username}</p>
+                                            </div>
+                                            <div>
+                                                <p className="font-plex">{user.data.xp}{" "}
+                                                    <span className="text-xs text-neutral-500">XP</span>
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p className="font-plex">100{" "}
-                                                <span className="text-xs text-neutral-500">XP</span>
-                                            </p>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -113,7 +114,7 @@ export async function getStaticProps() {
         };
     });
 
-    let usersRef = collection(db, "challenges");
+    let usersRef = collection(db, "users");
 
     let usersResponse = await getDocs(usersRef);
 
