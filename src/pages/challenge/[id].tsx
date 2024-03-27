@@ -76,7 +76,7 @@ export default function Challenge({ id, keyItems, mdContent, solutions }: any) {
                 >
                     <section className="flex gap-4 w-full h-full">
                         <section className="w-1/2 h-full">
-                            <div className="mx-4 p-4 shadow-md">
+                            <div className="mx-4 p-4 shadow-md h-full">
                                 <ChallengeTabs
                                     id={id}
                                     title={keyItems.title}

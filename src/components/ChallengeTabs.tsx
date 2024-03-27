@@ -18,7 +18,7 @@ export default function ChallengeTabs({ id, title, description, difficulty, solu
             title: "Description",
             value: "description",
             content: (
-                <div className="w-full overflow-x-hidden overflow-y-scroll relative h-full rounded-2xl p-10 border border-[#E851EB]/25 font-bold text-white bg-zinc-950/30 backdrop-blur-xl no-visible-scrollbar">
+                <div className="w-full overflow-x-hidden overflow-y-scroll relative h-fit rounded-2xl p-10 border border-[#E851EB]/25 font-bold text-white bg-zinc-950/30 backdrop-blur-xl no-visible-scrollbar">
                     <div className="flex items-center justify-between">
                         <h1 className="font-plex font-bold text-2xl">{id}. {title}</h1>
                         <p className={`text-sm font-plex border font-light rounded-full ${difficulty == "Easy" ? "text-green-500 border-green-500/[0.2]" : difficulty == "Medium" ? "text-orange-500 border-orange-500/[0.2]" : "text-red-500 border-red-500/[0.2]"} px-2 py-0.5`}>
@@ -26,7 +26,7 @@ export default function ChallengeTabs({ id, title, description, difficulty, solu
                         </p>
                     </div>
                     <article
-                        className="mt-6 overflow-x-hidden overflow-y-scroll font-plex text-base prose prose-neutral prose-p:text-neutral-400 prose-p:font-light dark:prose-li:text-neutral-500 dark:prose-ol:text-neutral-500 prose-strong:text-neutral-300 prose-code:font-martian prose-code:text-xs dark:prose-a:text-pink-400"
+                        className="mt-6 overflow-x-hidden no-visible-scrollbar w-full overflow-y-scroll font-plex text-base prose prose-neutral prose-p:text-neutral-400 prose-p:font-light dark:prose-li:text-neutral-500 dark:prose-ol:text-neutral-500 prose-strong:text-neutral-300 prose-code:font-martian prose-code:text-xs dark:prose-a:text-pink-400"
                         dangerouslySetInnerHTML={{ __html: description }}
                     />
                 </div>
@@ -36,7 +36,7 @@ export default function ChallengeTabs({ id, title, description, difficulty, solu
             title: "Solutions",
             value: "solutions",
             content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 border border-[#E851EB]/25 text-xl md:text-4xl font-bold text-white bg-zinc-950/30 backdrop-blur-xl">
+                <div className="w-full overflow-hidden relative min-h-[40rem] rounded-2xl p-10 border border-[#E851EB]/25 text-xl md:text-4xl font-bold text-white bg-zinc-950/30 backdrop-blur-xl">
                     <p className="text-2xl">Solutions</p>
                     <div className="flex-col gap-2">
                         <div>
@@ -79,7 +79,7 @@ export default function ChallengeTabs({ id, title, description, difficulty, solu
     ];
 
     return (
-        <div className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b font-plex font-medium text-sm flex flex-col max-w-5xl mx-auto w-full items-start justify-start">
+        <div className="h-full [perspective:1000px] relative font-plex font-medium text-sm flex flex-col max-w-5xl mx-auto w-full items-start justify-start">
             <Tabs tabs={tabs} />
         </div>
     );
