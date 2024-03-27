@@ -113,7 +113,7 @@ export default function EditorWindow({ hints }: EditorWindowProps) {
                 <div>
                     <CodeEditor monaco={monaco} code={code} setCode={setCode} />
                 </div>
-                <div className="relative bg-[#09090B] border-t-2 border-[#E851EB]/50 overflow-y-scroll">
+                <div className="relative bg-[#09090B] border-t-2 border-[#E851EB]/50 overflow-y-scroll no-visible-scrollbar">
                     <div className="z-10 sticky top-0 bg-[#09090B] border-b-2 border-[#E851EB]/50 py-2 px-3">
                         <div className="flex items-center gap-4 justify-start">
                             <button

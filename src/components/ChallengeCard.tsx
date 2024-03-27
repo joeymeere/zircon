@@ -20,7 +20,7 @@ export default function ChallengeCard({ id, data }: ChallengeCard) {
             <Icon className="absolute h-6 w-6 -bottom-3 -right-3 text-neutral-500" />
 
             <div className="flex gap-2 items-center justify-start">
-                <Link href="" passHref>
+                <Link href={`/challenges/${id}`} passHref>
                     <h2 className="dark:text-white text-black font-plex text-lg font-semibold text-shadow-sm shadow-white/75 hover:text-[#E40DB5] hover:shadow-[#E40DB5]/75">
                         {id}. {data.title}
                     </h2>
