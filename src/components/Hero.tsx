@@ -8,7 +8,7 @@ import Link from "next/link";
 export function Hero() {
     return (
         <>
-            <LampContainer className="pt-64">
+            <LampContainer className="pt-64 min-[1920px]:pt-24">
                 <motion.h1
                     initial={{ opacity: 0.5, y: 100 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -17,7 +17,7 @@ export function Hero() {
                         duration: 0.8,
                         ease: "easeInOut",
                     }}
-                    className="mt-8 bg-gradient-to-br from-white to-white/25 py-4 pt-64 bg-clip-text text-center text-4xl font-bold font-plex tracking-tight text-transparent md:text-7xl"
+                    className="mt-8 bg-gradient-to-br from-white to-white/25 py-4 pt-64 min-[1920px]:pt-0 bg-clip-text text-center text-4xl font-bold font-plex tracking-tight text-transparent md:text-7xl"
                 >
                     Go From Zero To
                     <br></br>
