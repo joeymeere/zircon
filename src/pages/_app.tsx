@@ -57,23 +57,42 @@ export default function App({ Component, pageProps }: AppProps) {
         noSemanticValidation: false,
         noSyntaxValidation: false,
       });
+
+      monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+        target: monaco.languages.typescript.ScriptTarget.ES2016,
+        allowNonTsExtensions: true,
+        moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
+        module: monaco.languages.typescript.ModuleKind.CommonJS,
+        typeRoots: ["node_modules/@types", "node_modules/@types/node"],
+        esModuleInterop: true,
+        allowJs: true,
+      });
     }
   }, [monaco])
 
   useEffect(() => {
     const getLibs = async () => {
       if (monaco) {
+        //"https://unpkg.com/axios@1.5.1/index.d.ts"
         const { data: web3js } = await axios.get(
-          "https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"
+          "https://unpkg.com/@solana/web3.js@latest/lib/index.d.ts"
         );
 
-        console.log(web3js)
-
-        monaco.languages.typescript.typescriptDefaults.addExtraLib(
+        monaco.languages.typescript.javascriptDefaults.addExtraLib(
           web3js,
-          "file:///node_modules/@solana/web3.js/lib/index.iife.js"
+        )
+
+        const { data: axiosData } = await axios.get(
+          "https://unpkg.com/axios@1.5.1/index.d.ts"
         );
-        console.log("Web3.js loaded.");
+
+        monaco.languages.typescript.javascriptDefaults.addExtraLib(
+          axiosData,
+        )
+
+        monaco.editor.createModel(web3js, "typescript");
+        monaco.editor.createModel(axiosData, "typescript");
+        console.log("Web3.js & Axios loaded.");
       }
     }
     getLibs();

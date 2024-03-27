@@ -18,6 +18,7 @@ export default function CodeEditor({
                 width={`100%`}
                 language={"typescript"}
                 value={code}
+                defaultLanguage="typescript"
                 theme="onedark"
                 defaultValue={code}
                 onChange={handleChange}
