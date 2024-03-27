@@ -14,6 +14,9 @@ import 'highlight.js/styles/github-dark.css';
 import { useToast } from "./ui/use-toast";
 import { motion } from "framer-motion";
 import { IconScript, IconUpload } from "@tabler/icons-react";
+import { addSolution } from "@/lib/post/addSolution";
+import { useSolanaSignIn } from "@/providers/SolanaAuthContext";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 hljs.configure({
     ignoreUnescapedHTML: true
@@ -21,59 +24,74 @@ hljs.configure({
 hljs.registerLanguage('javascript', javascript);
 
 interface EditorWindowProps {
+    id: string,
+    solutionAttributes: {
+        expectedField: string | null,
+        expectedType: string | null,
+        expectedValue: any,
+    };
     hints: string[];
 }
 
-export default function EditorWindow({ hints }: EditorWindowProps) {
+export default function EditorWindow({ id, solutionAttributes, hints }: EditorWindowProps) {
     const monaco = useMonaco();
-    const { toast } = useToast()
+    const { toast } = useToast();
+    const { currentUser } = useSolanaSignIn();
+    const { publicKey } = useWallet();
     const [loading, setLoading] = useState<boolean>(false);
     const [code, setCode] = useState<string>("async function main() {\n\n};\n\nmain();");
     const [output, setOutput] = useState<string>("");
     const [correct, setCorrect] = useState<boolean>(false);
     const [active, setActive] = useState<string>("run");
-
-    let conditionalField = "tokens"
+    const [executedTime, setExecutedTime] = useState<number>(0);
 
     async function getResponse() {
         try {
             setCorrect(false);
             setLoading(true);
+
+            let start = performance.now();
             const response = await runCode(code);
+            let end = performance.now()
+
+            console.log("Executed Time:", `${end - start}ms`);
 
             if (response) {
-                if (typeof response == 'object') {
-                    let introspect = response[conditionalField];
+                if (typeof response == solutionAttributes.expectedType) {
+                    let introspect = response[solutionAttributes.expectedField as string];
                     if (introspect) {
                         setOutput(beautify(response));
                         setCorrect(true);
+
                         toast({
-                            title: "Well Done!",
+                            title: "✅ Well Done!",
                             description: "You've completed this challenge.",
-                            className: "bg-black"
-                        })
+                            className: "bg-zinc-950"
+                        });
+
+                        setExecutedTime(end - start);
                     } else {
                         setOutput(`The response below is incorrect:\n\n${beautify(response)}`);
                         toast({
-                            title: "Whoops!",
+                            title: "❌ Whoops!",
                             description: "The solution provided was incorrect.",
-                            className: "bg-black"
+                            className: "bg-zinc-950"
                         });
                     }
                 } else {
                     setOutput(`The response below is incorrect:\n\n${beautify(response)}`);
                     toast({
-                        title: "Whoops!",
+                        title: "❌ Whoops!",
                         description: "The solution provided was incorrect.",
-                        className: "bg-black"
+                        className: "bg-zinc-950"
                     });
                 }
             } else {
                 setOutput(`The response below is incorrect:\n\n${beautify(response)}`);
                 toast({
-                    title: "Whoops!",
+                    title: "❌ Whoops!",
                     description: "The solution provided was incorrect.",
-                    className: "bg-black"
+                    className: "bg-zinc-950"
                 });
             }
         } catch (err: any) {
@@ -96,7 +114,38 @@ export default function EditorWindow({ hints }: EditorWindowProps) {
                         Run
                     </span>
                 </button>
-                <button className="inline-flex gap-2 items-center justify-center shadow-[0_0_0_3px_#000000_inset] px-3 py-1.5 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-semibold text-xs">
+                <button
+                    onClick={async () => {
+                        if (correct) {
+                            if (publicKey) {
+                                await addSolution(
+                                    id,
+                                    correct,
+                                    code,
+                                    executedTime,
+                                    {
+                                        username: currentUser?.username as string,
+                                        image: currentUser?.image as string,
+                                        userId: publicKey?.toString() as string
+                                    }
+                                )
+                            } else {
+                                toast({
+                                    title: "🔑 Please Log In",
+                                    description: "Log in to post a solution.",
+                                    className: "bg-zinc-950"
+                                });
+                            }
+                        } else {
+                            toast({
+                                title: "⏳ Finish The Question",
+                                description: "Please provide a correct solution to submit.",
+                                className: "bg-zinc-950"
+                            });
+                        }
+                    }}
+                    className="inline-flex gap-2 items-center justify-center shadow-[0_0_0_3px_#000000_inset] px-3 py-1.5 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-semibold text-xs"
+                >
                     <IconUpload stroke={1} className="w-4 h-4" />
                     Submit
                 </button>

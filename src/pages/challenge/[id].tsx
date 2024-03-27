@@ -82,11 +82,12 @@ export default function Challenge({ id, keyItems, mdContent, solutions }: any) {
                                     title={keyItems.title}
                                     difficulty={keyItems.difficulty}
                                     description={mdContent}
+                                    solutions={solutions}
                                 />
                             </div>
                         </section>
                         <section className="absolute top-0 right-0 w-1/2 h-full">
-                            <EditorWindow hints={keyItems.hints} />
+                            <EditorWindow id={id} solutionAttributes={keyItems.solutionAttributes} hints={keyItems.hints} />
                         </section>
                     </section>
                 </main>
