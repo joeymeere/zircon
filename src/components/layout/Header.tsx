@@ -7,6 +7,7 @@ import useScroll from "@/lib/hooks/useScroll";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/nav-menu";
 import SolanaAuthButtonFirebase from "../auth/SolanaAuthButtonFirebase";
 import { auth } from "@/firebase";
+import { motion } from "framer-motion";
 
 export function Header() {
     const router = useRouter();
@@ -35,52 +36,49 @@ export function Header() {
                     <div className="md:flex justify-center space-x-4 hidden text-gray-900 dark:text-white font-plex text-sm">
                         <Menu setActive={setActive}>
                             <Link href={"/challenges"} passHref>
-                                <MenuItem setActive={setActive} active={active} item="Challenges">
-                                    <div className="flex flex-col space-y-4 text-sm">
-                                        <HoveredLink href="/easy">
-                                            <IconChartBubble size={16} />
-                                            Easy
-                                        </HoveredLink>
-                                        <HoveredLink href="/medium">
-                                            <IconProgressBolt size={16} />
-                                            Medium
-                                        </HoveredLink>
-                                        <HoveredLink href="/hard">
-                                            <IconCode size={16} />
-                                            Hard
-                                        </HoveredLink>
-                                    </div>
-                                </MenuItem>
+                                <motion.p
+                                    transition={{ duration: 0.3 }}
+                                    className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white hover:bg-gradient-to-tr from-[#E40DB5]/25 to-[#E851EB]/25 p-3 rounded-md"
+                                >
+                                    Challenges
+                                </motion.p>
                             </Link>
                             <MenuItem setActive={setActive} active={active} item="Learn">
                                 <div className="text-sm grid grid-cols-2 gap-10 p-4">
                                     <ProductItem
-                                        title="Documentation"
-                                        href="https://stockpile.so"
-                                        src="https://www.soldev.app/_next/image?url=https%3A%2F%2Fsolana.com%2Fsocial%2Fsolana.jpg&w=640&q=75"
-                                        description="Get foundational knowledge on all things Solana"
+                                        title="Courses"
+                                        href="/learn"
+                                        src="/zirconcover.png"
+                                        description="Guided courses for going from zero to one on Solana, by Zircon."
                                     />
                                     <ProductItem
                                         title="SolDev"
-                                        href="https://windmill.arrange.dev"
-                                        src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
+                                        href="https://soldev.app/"
+                                        src="/soldev.jpg"
                                         description="Community content for all aspects of building on Solana."
                                     />
                                     <ProductItem
                                         title="Cookbook"
-                                        href="https://forwarder.arrange.dev"
+                                        href="https://solanacookbook.com/#contributing"
                                         src="https://www.soldev.app/_next/image?url=https%3A%2F%2Fsolanacookbook.com%2Fcookbook-sharing-card.png&w=640&q=75"
                                         description="Compendium of useful information for a Solana dev."
                                     />
                                     <ProductItem
                                         title="Bootcamp"
-                                        href="https://forwarder.arrange.dev"
+                                        href="https://www.soldev.app/library/playlist/solana-bootcamp-basics"
                                         src="https://www.soldev.app/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2F0P8JeL3TURU%2Fmaxresdefault.jpg&w=640&q=75"
-                                        description="A zero to one video course for building on Solana."
+                                        description="Learn how to build on Solana using this video series."
                                     />
                                 </div>
                             </MenuItem>
-                            <MenuItem setActive={setActive} active={active} item="Leaderboard" />
+                            <Link href="/leaderboard" passHref>
+                                <motion.p
+                                    transition={{ duration: 0.3 }}
+                                    className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white hover:bg-gradient-to-tr from-[#E40DB5]/25 to-[#E851EB]/25 p-3 rounded-md"
+                                >
+                                    Leaderboard
+                                </motion.p>
+                            </Link>
                         </Menu>
                     </div>
                     <div className="flex gap-6 justify-end items-center">

@@ -39,7 +39,7 @@ export default function EditorWindow({ id, solutionAttributes, hints }: EditorWi
     const { currentUser } = useSolanaSignIn();
     const { publicKey } = useWallet();
     const [loading, setLoading] = useState<boolean>(false);
-    const [code, setCode] = useState<string>("import * as web3 from \"@solana/web3.js\";\n\nasync function main() {\n//Your code here\n};\n\nmain();");
+    const [code, setCode] = useState<string>("const web3 = require(\"@solana/web3.js\");\n\nasync function main() {\n//Your code here\n};\n\nmain();");
     const [output, setOutput] = useState<string>("");
     const [correct, setCorrect] = useState<boolean>(false);
     const [active, setActive] = useState<string>("run");

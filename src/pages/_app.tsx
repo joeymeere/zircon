@@ -1,6 +1,5 @@
 import { Toaster } from "@/components/ui/toaster";
 import { signIn, signOut } from "@/firebase";
-import { supportedPackages } from "@/lib/packageLinks";
 import { SolanaProviders } from "@/providers/SolanaProvider";
 import { SolanaSignInProvider } from "@/providers/SolanaSignInProvider";
 import "@/styles/globals.css";
@@ -8,7 +7,6 @@ import { useMonaco } from "@monaco-editor/react";
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import axios from "axios";
-import * as web3 from "@solana/web3.js";
 
 export default function App({ Component, pageProps }: AppProps) {
   const monaco = useMonaco();
