@@ -1,14 +1,17 @@
 export async function runCode(code: string) {
     try {
-        //const run = await eval(code);
-        const web3 = await require("@solana/web3.js");
-
+        let args: [] = [];
         const pattern = /const web3 = require\("@solana\/web3\.js"\);\s*/;
         const modifiedCode = code.replace(pattern, '');
 
-        const run = new Function("web3", modifiedCode);
+        const web3 = await import("@solana/web3.js");
 
-        return run.call(web3);
+        let libs = { web3 };
+
+        //const run = new Function("web3", 'return' + modifiedCode);
+        let func = new Function(...Object.keys(libs), 'return ' + modifiedCode)(...Object.values(libs));
+
+        return await func.call(null, ...args);
     } catch(err) {
         throw err;
     }
