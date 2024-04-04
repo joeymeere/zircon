@@ -17,6 +17,7 @@ import { IconScript, IconUpload } from "@tabler/icons-react";
 import { addSolution } from "@/lib/post/addSolution";
 import { useSolanaSignIn } from "@/providers/SolanaAuthContext";
 import { useWallet } from "@solana/wallet-adapter-react";
+import { Connection, PublicKey } from "@solana/web3.js";
 
 hljs.configure({
     ignoreUnescapedHTML: true
@@ -95,7 +96,12 @@ export default function EditorWindow({ id, solutionAttributes, hints }: EditorWi
                 });
             }
         } catch (err: any) {
-            throw Error(err.message);
+            setOutput(`An error has occurred:\n\n${beautify(err.message)}`);
+            toast({
+                    title: "⛔ Error!",
+                    description: "Check the output for error info.",
+                    className: "bg-zinc-950"
+                });
         } finally {
             setLoading(false);
         }

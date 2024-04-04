@@ -2,6 +2,7 @@ import Hero from "@/components/landing/Hero";
 import SEO from "@/components/SEO";
 import Features from "@/components/landing/Features";
 import Header from "@/components/layout/Header";
+import { SparklesCore } from "@/components/ui/sparkles";
 
 export default function Home() {
   return (
@@ -15,13 +16,22 @@ export default function Home() {
       <main
         className={`flex min-h-screen flex-col items-center justify-between`}
       >
-        <section className="relative w-full">
-          <Hero />
-        </section>
+        <div className="w-full fixed inset-0 h-screen">
+          <SparklesCore
+            id="tsparticlesfullpage"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={100}
+            className="w-full h-full"
+            particleColor="#FFFFFF"
+          />
+        </div>
+        <Hero />
         <section className="relative w-full">
           <Features />
         </section>
-      </main>
+    </main >
     </>
   );
 }

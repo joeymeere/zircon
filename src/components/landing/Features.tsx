@@ -54,9 +54,6 @@ export default function Features() {
                         width={2432}
                         height={1442}
                     />
-                    <div className="relative" aria-hidden="true">
-                        <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-black pt-[7%]" />
-                    </div>
                 </div>
             </div>
             <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
