@@ -27,7 +27,7 @@ export function Header() {
                     <Link href="/" className="ml-2 block">
                         <Image
                             priority
-                            src={"/zircon-logo-new.svg"}
+                            src={"/zircon-simple-b.svg"}
                             alt="zircon"
                             width={125}
                             height={50}
