@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
-import { LampContainer } from "./ui/lamp";
 import { motion } from "framer-motion";
 import { IconBolt, IconSchool } from "@tabler/icons-react";
 import Link from "next/link";
+import { LampContainer } from "../ui/lamp";
 
-export function Hero() {
+export default function Hero() {
     return (
         <>
-            <LampContainer className="pt-64 min-[1920px]:pt-24">
+            <LampContainer className="pt-72 min-[1920px]:pt-24">
                 <motion.h1
                     initial={{ opacity: 0.5, y: 100 }}
                     whileInView={{ opacity: 1, y: 0 }}
