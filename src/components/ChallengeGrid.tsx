@@ -13,8 +13,10 @@ import {
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
- 
-export default function BentoGridThirdDemo() {
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+export default function ChallengeGrid() {
   return (
     <BentoGrid className="mx-auto md:auto-rows-[20rem]">
       {items.map((item, i) => (
@@ -33,7 +35,7 @@ export default function BentoGridThirdDemo() {
 const Skeleton = () => (
   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl   dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-zinc-950"></div>
 );
- 
+
 const SkeletonTwo = () => {
   const variants = {
     initial: {
@@ -74,6 +76,8 @@ const SkeletonTwo = () => {
   );
 };
 const SkeletonFour = () => {
+  const { push } = useRouter();
+
   const first = {
     initial: {
       x: 20,
@@ -103,6 +107,7 @@ const SkeletonFour = () => {
     >
       <motion.div
         variants={first}
+        onClick={() => push("/challenges/easy")}
         className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-zinc-950 dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
       >
         <Image
@@ -119,7 +124,10 @@ const SkeletonFour = () => {
           Easy
         </p>
       </motion.div>
-      <motion.div className="h-full relative z-20 w-1/3 rounded-2xl bg-white p-4 dark:bg-zinc-950 dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center">
+      <motion.div
+        onClick={() => push("/challenges/medium")}
+        className="h-full relative z-20 w-1/3 rounded-2xl bg-white p-4 dark:bg-zinc-950 dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+      >
         <Image
           src="/codesample-rebalanceProportions.png"
           alt="Rebalance Proportions"
@@ -136,6 +144,7 @@ const SkeletonFour = () => {
       </motion.div>
       <motion.div
         variants={second}
+        onClick={() => push("/challenges/hard")}
         className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-zinc-950 dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
       >
         <Image
@@ -180,7 +189,7 @@ const SkeletonFive = () => {
       },
     },
   };
- 
+
   return (
     <motion.div
       initial="initial"

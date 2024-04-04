@@ -3,12 +3,12 @@ import { db } from "@/firebase";
 import { Icon } from "@/components/ui/evervault-card";
 import { motion } from "framer-motion";
 import { collection, getDocs } from "firebase/firestore";
-import BentoGridThirdDemo from "@/components/ChallengeGrid";
 import Header from "@/components/layout/Header";
 import Image from "next/image";
 import ChallengeCard from "@/components/ChallengeCard";
 import { Challenge } from "@/interfaces/challenge";
 import SEO from "@/components/SEO";
+import ChallengeGrid from "@/components/ChallengeGrid";
 
 interface ChallengesProps {
     challenges: Challenge[],
@@ -58,7 +58,7 @@ export default function Challenges({ challenges, users }: ChallengesProps) {
                     </section>
                     <section className="w-full relative flex gap-4">
                         <div className="w-2/3 relative">
-                            <BentoGridThirdDemo />
+                            <ChallengeGrid />
                             <div className="mt-4 flex-col space-y-4">
                                 {challenges?.map((ch) => (
                                     <ChallengeCard
