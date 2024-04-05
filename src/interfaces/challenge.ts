@@ -11,6 +11,7 @@ export interface Challenge {
             expectedType: string,
             expectedField: string,
             expectedValue: any,
-        }
+        },
+        functionName: string,
     }
 }

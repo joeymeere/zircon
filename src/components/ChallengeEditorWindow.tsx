@@ -26,6 +26,7 @@ hljs.registerLanguage('javascript', javascript);
 
 interface EditorWindowProps {
     id: string,
+    defaultName: string,
     solutionAttributes: {
         expectedField: string | null,
         expectedType: string | null,
@@ -34,13 +35,13 @@ interface EditorWindowProps {
     hints: string[];
 }
 
-export default function EditorWindow({ id, solutionAttributes, hints }: EditorWindowProps) {
+export default function EditorWindow({ id, defaultName, solutionAttributes, hints }: EditorWindowProps) {
     const monaco = useMonaco();
     const { toast } = useToast();
     const { currentUser } = useSolanaSignIn();
     const { publicKey } = useWallet();
     const [loading, setLoading] = useState<boolean>(false);
-    const [code, setCode] = useState<string>("const web3 = require(\"@solana/web3.js\");\n\nasync function main() {\n//Your code here\n};\n\nmain();");
+    const [code, setCode] = useState<string>(`const web3 = require(\"@solana/web3.js\");\n\nasync function ${defaultName}() {\n\n};\n\n${defaultName}();`);
     const [output, setOutput] = useState<string>("");
     const [correct, setCorrect] = useState<boolean>(false);
     const [active, setActive] = useState<string>("run");

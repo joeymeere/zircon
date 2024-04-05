@@ -87,7 +87,12 @@ export default function Challenge({ id, keyItems, mdContent, solutions }: any) {
                             </div>
                         </section>
                         <section className="absolute top-0 right-0 w-1/2 h-full">
-                            <EditorWindow id={id} solutionAttributes={keyItems.solutionAttributes} hints={keyItems.hints} />
+                            <EditorWindow
+                                id={id}
+                                defaultName={keyItems.functionName}
+                                solutionAttributes={keyItems.solutionAttributes}
+                                hints={keyItems.hints}
+                            />
                         </section>
                     </section>
                 </main>
