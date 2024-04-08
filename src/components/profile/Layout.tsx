@@ -1,22 +1,31 @@
+import { useWallet } from '@solana/wallet-adapter-react'
 import { IconCode, IconMedal2, IconSchool, IconSettings, IconUser } from '@tabler/icons-react'
-
-const subNavigation = [
-    { name: 'Profile', href: '#', icon: IconUser, current: true },
-    { name: 'Badges', href: '#', icon: IconMedal2, current: false },
-    { name: 'Challenges', href: '#', icon: IconCode, current: false },
-    { name: 'Courses', href: '#', icon: IconSchool, current: false },
-    { name: 'Account', href: '#', icon: IconSettings, current: false },
-]
+import { useRouter } from 'next/router';
 
 function classNames(...classes: any) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default function ProfileLayout() {
+    const { query } = useRouter();
+    const { publicKey } = useWallet();
+
+    const subNavigation = publicKey?.toString() == query.id ? [
+        { name: 'Profile', href: '#', icon: IconUser, current: true },
+        { name: 'Badges', href: '#', icon: IconMedal2, current: false },
+        { name: 'Challenges', href: '#', icon: IconCode, current: false },
+        { name: 'Courses', href: '#', icon: IconSchool, current: false },
+        { name: 'Account', href: '#', icon: IconSettings, current: false },
+    ] : [
+        { name: 'Profile', href: '#', icon: IconUser, current: true },
+        { name: 'Badges', href: '#', icon: IconMedal2, current: false },
+        { name: 'Challenges', href: '#', icon: IconCode, current: false },
+        { name: 'Courses', href: '#', icon: IconSchool, current: false },
+    ]
 
     return (
         <div>
-            <main className="relative mt-32">
+            <main className="relative w-full mt-32">
                 <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
                     <div className="overflow-hidden rounded-lg bg-zinc-950 shadow">
                         <div className="divide-y divide-neutral-500/25 lg:grid lg:grid-cols-12 lg:divide-x lg:divide-y-0">
@@ -50,7 +59,7 @@ export default function ProfileLayout() {
                             </aside>
 
                             <div className='px-4'>
-                               
+
                             </div>
                         </div>
                     </div>

@@ -38,3 +38,18 @@ body {
 .no-visible-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+progress.progress-bar::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+progress.progress-bar::-webkit-progress-value {
+  background-image: linear-gradient(to right, #E40DB5, #E851EB);
+  border-radius: 9999px; /* A large px value will create a rounded effect */
+}
+
+/* For Firefox */
+progress.progress-bar::-moz-progress-bar {
+  background-image: linear-gradient(to right, #E40DB5, #E851EB);
+  border-radius: 9999px; /* A large px value will create a rounded effect */
+}

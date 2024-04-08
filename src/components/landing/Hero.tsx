@@ -17,7 +17,7 @@ export default function Hero() {
                     duration: 0.8,
                     ease: "easeInOut",
                 }}
-                className="mt-8 bg-gradient-to-br from-white to-white/25 py-4 pt-56 min-[1920px]:pt-64 bg-clip-text text-center text-4xl font-bold font-plex tracking-tight text-transparent md:text-7xl"
+                className="mt-8 bg-gradient-to-br from-white to-white/25 py-4 pt-56 min-[1920px]:pt-80 bg-clip-text text-center text-4xl font-bold font-plex tracking-tight text-transparent md:text-7xl"
             >
                 Go From Zero To
                 <br></br>
