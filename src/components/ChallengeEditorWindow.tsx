@@ -13,7 +13,7 @@ import 'highlight.js/styles/default.css';
 import 'highlight.js/styles/github-dark.css';
 import { useToast } from "./ui/use-toast";
 import { motion } from "framer-motion";
-import { IconScript, IconUpload } from "@tabler/icons-react";
+import { IconChecks, IconClock, IconScript, IconUpload } from "@tabler/icons-react";
 import { addSolution } from "@/lib/post/addSolution";
 import { useSolanaSignIn } from "@/providers/SolanaAuthContext";
 import { useWallet } from "@solana/wallet-adapter-react";
@@ -99,10 +99,10 @@ export default function EditorWindow({ id, defaultName, solutionAttributes, hint
         } catch (err: any) {
             setOutput(`An error has occurred:\n\n${beautify(err.message)}`);
             toast({
-                    title: "⛔ Error!",
-                    description: "Check the output for error info.",
-                    className: "bg-zinc-950"
-                });
+                title: "⛔ Error!",
+                description: "Check the output for error info.",
+                className: "bg-zinc-950"
+            });
         } finally {
             setLoading(false);
         }
@@ -110,52 +110,67 @@ export default function EditorWindow({ id, defaultName, solutionAttributes, hint
 
     return (
         <div className="flex-col gap-2 h-full w-full overflow-y-auto overflow-x-scroll max-h-screen no-visible-scrollbar">
-            <div className="flex gap-2 items-center justify-end p-2 bg-zinc-950 rounded-tl-md border-b-2 border-[#E851EB]/50">
-                <button
-                    onClick={() => getResponse()}
-                    className="relative inline-flex overflow-hidden rounded-md p-[1px]"
-                >
-                    <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#E40DB5_50%,#E2CBFF_100%)]" />
-                    <span className="inline-flex gap-2 h-full w-full cursor-pointer items-center justify-center rounded-md bg-slate-950 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-3xl">
-                        <IconScript stroke={1} className="w-4 h-4" />
-                        Run
-                    </span>
-                </button>
-                <button
-                    onClick={async () => {
-                        if (correct) {
-                            if (publicKey) {
-                                await addSolution(
-                                    id,
-                                    correct,
-                                    code,
-                                    executedTime,
-                                    {
-                                        username: currentUser?.username as string,
-                                        image: currentUser?.image as string,
-                                        userId: publicKey?.toString() as string
-                                    }
-                                )
+            <div className="flex gap-2 items-center justify-between p-2 bg-zinc-950 rounded-tl-md border-b-2 border-[#E851EB]/50">
+                <div className="flex gap-1 items-center justify-start">
+                    {correct ? (
+                        <>
+                        <IconChecks stroke={1} size={16} className="text-green-600" />
+                        <p className="font-plex text-sm">Completed</p>
+                        </>
+                    ) : (
+                        <>
+                        <IconClock stroke={1} size={16} className="text-yellow-600" />
+                        <p className="font-plex text-sm">Pending</p>
+                        </>
+                    )}
+                </div>
+                <div className="flex gap-2 items-center justify-end">
+                    <button
+                        onClick={() => getResponse()}
+                        className="relative inline-flex overflow-hidden rounded-md p-[1px]"
+                    >
+                        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#E40DB5_50%,#E2CBFF_100%)]" />
+                        <span className="inline-flex gap-2 h-full w-full cursor-pointer items-center justify-center rounded-md bg-slate-950 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-3xl">
+                            <IconScript stroke={1} className="w-4 h-4" />
+                            Run
+                        </span>
+                    </button>
+                    <button
+                        onClick={async () => {
+                            if (correct) {
+                                if (publicKey) {
+                                    await addSolution(
+                                        id,
+                                        correct,
+                                        code,
+                                        executedTime,
+                                        {
+                                            username: currentUser?.username as string,
+                                            image: currentUser?.image as string,
+                                            userId: publicKey?.toString() as string
+                                        }
+                                    )
+                                } else {
+                                    toast({
+                                        title: "🔑 Please Log In",
+                                        description: "Log in to post a solution.",
+                                        className: "bg-zinc-950"
+                                    });
+                                }
                             } else {
                                 toast({
-                                    title: "🔑 Please Log In",
-                                    description: "Log in to post a solution.",
+                                    title: "⏳ Finish The Question",
+                                    description: "Please provide a correct solution to submit.",
                                     className: "bg-zinc-950"
                                 });
                             }
-                        } else {
-                            toast({
-                                title: "⏳ Finish The Question",
-                                description: "Please provide a correct solution to submit.",
-                                className: "bg-zinc-950"
-                            });
-                        }
-                    }}
-                    className="inline-flex gap-2 items-center justify-center shadow-[0_0_0_3px_#000000_inset] px-3 py-1.5 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-semibold text-xs"
-                >
-                    <IconUpload stroke={1} className="w-4 h-4" />
-                    Submit
-                </button>
+                        }}
+                        className="inline-flex gap-2 items-center justify-center shadow-[0_0_0_3px_#000000_inset] px-3 py-1.5 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-semibold text-xs"
+                    >
+                        <IconUpload stroke={1} className="w-4 h-4" />
+                        Submit
+                    </button>
+                </div>
             </div>
             {correct ? (
                 <ConfettiExplosion

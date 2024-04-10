@@ -86,7 +86,7 @@ export default function Profile({ id, keyItems }: any) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="">
+                            <div className="border border-neutral-500 p-2">
                                 <Image src="/level-one.png" alt="" width={100} height={100} className="w-24 rounded-sm border border-neutral-500/25" />
                                 <p className="font-plex font-medium mt-2">Novice</p>
                                 <progress value={keyItems.xp} max={150} className="progress-bar w-fit h-[8px] overflow-hidden rounded-full bg-neutral-900" />

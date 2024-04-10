@@ -1,6 +1,6 @@
 "use client";
 
-import { IconActivity, IconStar } from "@tabler/icons-react";
+import { IconActivity, IconArrowBigUpLines, IconArrowUp, IconStar, IconStarFilled } from "@tabler/icons-react";
 import { Tabs } from "./ui/shuffling-tabs";
 import Image from "next/image";
 
@@ -42,25 +42,29 @@ export default function ChallengeTabs({ id, title, description, difficulty, solu
                         <div>
                             {solutions.length > 0 ? (
                                 <div className="mt-6 flex-col gap-2">
-                                    {solutions.map((sol: any, i: number) => (
-                                        <div key={i} className="flex justify-between items-center bg-zinc-950 border border-[#E851EB]/25 p-4 rounded-md">
-                                            <div className="flex gap-2 items-center">
-                                                <Image src={sol.data.image} alt="" width={100} height={100} className="w-10 h-10 rounded-full" />
-                                                <div className="flex-col space-y-1">
-                                                    <p className="font-plex text-base">{sol.data.username}</p>
-                                                    <p className="font-plex text-neutral-300 text-xs">{sol.data.execTime}{" "}
-                                                        <span className="text-[0.5rem] text-neutral-500">ms</span>
-                                                    </p>
+                                    {solutions.map((sol: any, i: number) => {
+                                        let placing = i;
+                                        return (
+                                            <div key={i} className="flex justify-between items-center bg-zinc-950 border border-[#E851EB]/25 p-4 rounded-md">
+                                                <div className="flex gap-2 items-center">
+                                                    {placing < 3 && (
+                                                        <IconStarFilled className="w-4 h-4 text-yellow-400" />
+                                                    )}
+                                                    <Image src={sol.data.image} alt="" width={100} height={100} className="w-10 h-10 rounded-full" />
+                                                    <div className="flex-col space-y-1">
+                                                        <p className="font-plex text-base">{sol.data.username}</p>
+                                                        <p className="font-plex text-neutral-300 text-xs">{sol.data.execTime}{" "}
+                                                            <span className="text-[0.5rem] text-neutral-500">ms</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div className="flex gap-2 items-center">
+                                                    <IconArrowBigUpLines className="w-6 h-6 text-[#E851EB]" />
+                                                    <p className="font-plex text-lg">{sol.data.rating}</p>
                                                 </div>
                                             </div>
-                                            <div className="flex gap-2 items-center">
-                                                <IconStar className="w-4 h-4 text-[#E851EB]"/>
-                                                <p className="font-plex text-base">{sol.data.rating}{" "}
-                                                    <span className="text-xs text-neutral-500">/ 5</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    ))}
+                                        )
+                                    })}
                                 </div>
                             ) : (
                                 <div className="mt-6 w-full border border-[#E851EB]/10 rounded-md flex-col justify-center py-12">
