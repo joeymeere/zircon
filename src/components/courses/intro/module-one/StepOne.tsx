@@ -13,15 +13,15 @@ export default function IntroOne() {
                                 <h1 className="mb-6 font-plex font-bold text-white text-3xl">Welcome!</h1>
                                 <div className="flex-col space-y-4">
                                     <p className="font-plex font-light text-neutral-500 text-base">
-                                        We're going to help your get your feet wet with Solana in just three simple modules.
-                                        In this first module, we'll teach you the core basics of Solana.
+                                        We&apos;re going to help your get your feet wet with Solana in just three simple modules.
+                                        In this first module, we&apos;ll teach you the core basics of Solana.
                                     </p>
                                     <p className="font-plex font-light text-neutral-500 text-base">
                                         Before we get into the weeds, take a second to admire the object to the right of this
                                         container. As a simple exercise, you can think of this object as an account on Solana.
                                     </p>
                                     <p className="font-plex font-light text-neutral-500 text-base">
-                                        This account is ours. You're free to change, or "mutate" it however you like.
+                                        This account is ours. You're free to change, or &lsquo;mutate&lsquo; it however you like.
                                         In terms of Solana, you are the owner of this account.
                                     </p>
                                     <p className="font-plex font-light text-neutral-500 text-base">

@@ -114,12 +114,12 @@ export default function EditorWindow({ id, defaultName, solutionAttributes, hint
                 <div className="flex gap-1 items-center justify-start">
                     {correct ? (
                         <>
-                        <IconChecks stroke={1} size={16} className="text-green-600" />
+                        <IconChecks size={16} className="text-green-600" />
                         <p className="font-plex text-sm">Completed</p>
                         </>
                     ) : (
                         <>
-                        <IconClock stroke={1} size={16} className="text-yellow-600" />
+                        <IconClock size={16} className="text-yellow-600" />
                         <p className="font-plex text-sm">Pending</p>
                         </>
                     )}
@@ -165,7 +165,7 @@ export default function EditorWindow({ id, defaultName, solutionAttributes, hint
                                 });
                             }
                         }}
-                        className="inline-flex gap-2 items-center justify-center shadow-[0_0_0_3px_#000000_inset] px-3 py-1.5 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-semibold text-xs"
+                        className={`inline-flex gap-2 items-center justify-center shadow-[0_0_0_3px_#000000_inset] px-3 py-1.5 bg-transparent border ${correct ? "border-white text-white" : "border-neutral-500 text-neutral-500"} rounded-lg font-semibold text-xs`}
                     >
                         <IconUpload stroke={1} className="w-4 h-4" />
                         Submit

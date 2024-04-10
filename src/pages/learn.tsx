@@ -3,6 +3,7 @@ import CanvasRevealEffectDemo2 from "@/components/CourseCard";
 import SEO from "@/components/SEO";
 import Header from "@/components/layout/Header";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Learn() {
     return (
@@ -44,14 +45,16 @@ export default function Learn() {
                             Work through hands-on Solana courses, and level up your skills.
                         </motion.p>
                         <div className="grid grid-cols-3">
-                            <CourseCard
-                                colors={[
-                                    [236, 72, 153],
-                                    [232, 121, 249],
-                                ]}
-                                title="Intro"
-                                description="Learn the basics of Solana with Typescript."
-                            />
+                            <Link href={"/course/intro"} passHref>
+                                <CourseCard
+                                    colors={[
+                                        [236, 72, 153],
+                                        [232, 121, 249],
+                                    ]}
+                                    title="Intro"
+                                    description="Learn the basics of Solana with Typescript."
+                                />
+                            </Link>
                             <CourseCard
                                 colors={[[125, 211, 252]]}
                                 title="Intermediate"
