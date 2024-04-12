@@ -25,13 +25,18 @@ export function Header() {
             >
                 <div className="w-full max-w-[1920px] grid grid-cols-3 items-center content-center px-8 py-6 h-16 max-[480px]:px-4 md:w-full">
                     <Link href="/" className="ml-2 block">
-                        <Image
-                            priority
-                            src={"/zircon-simple-b.svg"}
-                            alt="zircon"
-                            width={125}
-                            height={50}
-                        />
+                        <div className="flex gap-2 items-end">
+                            <Image
+                                priority
+                                src={"/zircon-simple-b.svg"}
+                                alt="zircon"
+                                width={125}
+                                height={50}
+                            />
+                            <div className="font-plex font-medium text-xs py-1 px-1.5 bg-gradient-to-tr from-[#E40DB5] to-[#E851EB] rounded-lg">
+                                Beta
+                            </div>
+                        </div>
                     </Link>
                     <div className="md:flex justify-center space-x-4 hidden text-gray-900 dark:text-white font-plex text-sm">
                         <Menu setActive={setActive}>
