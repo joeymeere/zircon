@@ -21,7 +21,7 @@ export default function IntroOne() {
                                         container. As a simple exercise, you can think of this object as an account on Solana.
                                     </p>
                                     <p className="font-plex font-light text-neutral-500 text-base">
-                                        This account is ours. You're free to change, or &lsquo;mutate&lsquo; it however you like.
+                                        This account is ours. You&apos;re free to change, or &lsquo;mutate&lsquo; it however you like.
                                         In terms of Solana, you are the owner of this account.
                                     </p>
                                     <p className="font-plex font-light text-neutral-500 text-base">
