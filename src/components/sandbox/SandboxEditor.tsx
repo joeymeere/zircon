@@ -36,7 +36,7 @@ export default function SandboxEditor() {
             }
         }
         findCode();
-    }, [])
+    }, [router.query.c])
 
     async function getResponse() {
         try {
