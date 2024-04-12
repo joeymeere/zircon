@@ -10,12 +10,12 @@ import { event } from "nextjs-google-analytics";
 import { IconCodePlus } from "@tabler/icons-react";
 import { useRouter } from "next/router";
 import { useUnifiedWallet, useUnifiedWalletContext } from "@jup-ag/wallet-adapter";
-import { toast } from "@/components/ui/use-toast";
 import { auth, db } from "@/firebase";
 import { getRandomAvatar } from "@/lib/getRandomAvatar";
 import { check76Credentials } from "@/lib/checks/check76Credentials";
 import { NotificationMetadata } from "@/interfaces/notification";
 import { UserMetadata } from "@/interfaces/user";
+import { useToast } from "@/components/ui/use-toast";
 
 const nonceStr = (nonce: string) => `|| id=${nonce}`;
 export const signInMessage = (nonce: string, domain: string) =>
@@ -38,6 +38,7 @@ export const SolanaSignInProvider: FC<SolanaSignInProviderProps> = ({
     signOut,
 }) => {
     const { setShowModal } = useUnifiedWalletContext();
+    const { toast } = useToast();
     const router = useRouter();
     const { publicKey, signMessage, connect, wallet, connected, disconnect } =
         useWallet();

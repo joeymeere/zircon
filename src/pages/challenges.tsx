@@ -139,8 +139,9 @@ export async function getStaticProps() {
             users: users,
             title: "Challenges | Zircon",
             description:
-                "Compete, earn XP, and asset yourself as a top Solana developer.",
+                "Compete, earn XP, and assert yourself as a top Solana developer.",
             image: "https://i.imgur.com/gzJsDAh.png",
         },
+        revalidate: 120
     };
 }
