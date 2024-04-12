@@ -76,12 +76,12 @@ export function Header() {
                                     />
                                 </div>
                             </MenuItem>
-                            <Link href="/leaderboard" passHref>
+                            <Link href="/sandbox" passHref>
                                 <motion.p
                                     transition={{ duration: 0.3 }}
                                     className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white hover:bg-gradient-to-tr from-[#E40DB5]/25 to-[#E851EB]/25 p-3 rounded-md"
                                 >
-                                    Leaderboard
+                                    Sandbox
                                 </motion.p>
                             </Link>
                         </Menu>
