@@ -104,7 +104,7 @@ export default function SandboxEditor() {
                         <div className="flex items-center gap-4 justify-start">
                             <button
                                 onClick={() => setActive("run")}
-                                className={`px-3 py-1.5 rounded-md font-plex font-semibold font-neutral-300 ${active == "run" ? "bg-[#E851EB]/50" : "hover:bg-[#E851EB]/25"} transition-colors`}
+                                className={`px-3 py-1.5 rounded-md font-plex text-white font-semibold font-neutral-300 ${active == "run" ? "bg-[#E851EB]/50" : "hover:bg-[#E851EB]/25"} transition-colors`}
                             >
                                 Output
                             </button>
