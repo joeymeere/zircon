@@ -45,7 +45,7 @@ export default function CourseCard({ colors, title, description }: CourseCardPro
             <h2 className="dark:text-white font-plex text-center text-2xl opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black mt-4  font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200">
               {title}
             </h2>
-            <h2 className="dark:text-zinc-400 font-plex text-center text-base opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black mt-4  font-light group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200">
+            <h2 className="text-neutral-500 font-plex text-center text-base opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-4  font-light group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200">
               {description}
             </h2>
           </div>

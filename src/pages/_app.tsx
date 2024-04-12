@@ -78,6 +78,14 @@ export default function App({ Component, pageProps }: AppProps) {
 
         monaco.languages.typescript.javascriptDefaults.addExtraLib(
           web3js,
+        );
+
+        const { data: spl } = await axios.get(
+          "https://unpkg.com/@solana/spl-token@0.1.8/lib/index.d.ts"
+        );
+
+        monaco.languages.typescript.javascriptDefaults.addExtraLib(
+          spl,
         )
 
         const { data: axiosData } = await axios.get(
@@ -86,11 +94,12 @@ export default function App({ Component, pageProps }: AppProps) {
 
         monaco.languages.typescript.javascriptDefaults.addExtraLib(
           axiosData,
-        )
+        );
 
         monaco.editor.createModel(web3js, "typescript");
+        monaco.editor.createModel(spl, "typescript");
         monaco.editor.createModel(axiosData, "typescript");
-        console.log("Web3.js & Axios loaded.");
+        console.log("Web3.js, SPL Token & Axios loaded.");
       }
     }
     getLibs();

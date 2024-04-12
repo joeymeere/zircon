@@ -41,7 +41,7 @@ export default function EditorWindow({ id, defaultName, solutionAttributes, hint
     const { currentUser } = useSolanaSignIn();
     const { publicKey } = useWallet();
     const [loading, setLoading] = useState<boolean>(false);
-    const [code, setCode] = useState<string>(`const web3 = require(\"@solana/web3.js\");\n\nasync function ${defaultName}() {\n\n};\n\n${defaultName}();`);
+    const [code, setCode] = useState<string>(`const web3 = require(\"@solana/web3.js\");\nconst spl = require(\"@solana/spl-token\");\n\nasync function ${defaultName}() {\n\n};\n\n${defaultName}();`);
     const [output, setOutput] = useState<string>("");
     const [correct, setCorrect] = useState<boolean>(false);
     const [active, setActive] = useState<string>("run");
