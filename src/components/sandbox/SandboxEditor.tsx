@@ -73,7 +73,7 @@ export default function SandboxEditor() {
                 <div className="flex gap-1 items-center justify-start">
                         <>
                             <IconBrandTypescript size={16} className="text-blue-600" />
-                            <p className="font-plex text-sm">Typescript</p>
+                            <p className="font-plex text-sm text-white">Typescript</p>
                         </>
                 </div>
                 <div className="flex gap-2 items-center justify-end">
