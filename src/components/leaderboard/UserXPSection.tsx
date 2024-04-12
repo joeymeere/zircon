@@ -49,7 +49,7 @@ const TopXP: FC<TopXPProps> = ({ placing, user }) => {
               />
               <div>
                 <p className="text-lg font-medium text-zinc-800 font-plex dark:text-zinc-100 text-shadow shadow-white/75 max-[640px]:text-md">
-                  @{user.data.username}
+                  {user.data.username}
                 </p>
               </div>
             </div>
@@ -57,10 +57,10 @@ const TopXP: FC<TopXPProps> = ({ placing, user }) => {
         </div>
         <p className="text-sm font-light text-zinc-500 font-plex dark:text-zinc-300">
           <span className="text-lg font-medium text-zinc-500 font-plex dark:text-zinc-200 max-[640px]:text-md">
-            {user.data.xp.toFixed(1)}{" "}
+            {user.data.xp.toFixed(0)}{" "}
           </span>
           <span className="text-sm text-zinc-500 font-plex dark:text-zinc-200">
-            points
+            XP
           </span>
         </p>
       </div>
