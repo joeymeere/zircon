@@ -2,6 +2,7 @@ import SEO from "@/components/SEO";
 import Header from "@/components/layout/Header";
 import ProfileLayout from "@/components/profile/Layout";
 import { BackgroundGradient } from "@/components/ui/card-gradient";
+import { SparklesCore } from "@/components/ui/sparkles";
 import { db } from "@/firebase";
 import { IconBrandGithub, IconBrandStackoverflow, IconBrandX } from "@tabler/icons-react";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
@@ -66,9 +67,22 @@ export default function Profile({ id, keyItems }: any) {
             <div className="back min-h-screen w-full dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative">
                 <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
                 <main
-                    className={`flex min-h-screen max-w-[1920px] flex-col items-center justify-between`}
+                    className={`flex min-h-screen max-w-[1920px] px-8 flex-col items-center justify-between`}
                 >
-                    <section className="mt-32 w-full relative">
+                    <section className="mt-32 w-full flex gap-6 relative">
+                        <div className="relative w-1/3 bg-black h-fullrounded-md">
+                            <SparklesCore
+                                id="tsparticlesfullpage"
+                                background="transparent"
+                                minSize={0.6}
+                                maxSize={1.4}
+                                particleDensity={100}
+                                className="w-full h-full absolute"
+                                particleColor="#FFFFFF"
+                            />
+                            <Image src={keyItems.image} alt="" width={100} height={100} className="h-32 w-32 rounded-sm inset-0 mt-auto mx-auto" />
+                        </div>
+                        <div className="w-2/3">
                         <BackgroundGradient className="flex items-center justify-between rounded-none p-4 sm:p-10 bg-white dark:bg-black">
                             <div className="flex gap-4 items-center">
                                 <Image src={keyItems.image} alt="" width={100} height={100} className="h-32 w-32 rounded-sm" />
@@ -93,6 +107,7 @@ export default function Profile({ id, keyItems }: any) {
                                 <p className="text-xs font-plex text-neutral-700">{150 - keyItems.xp} XP until level up</p>
                             </div>
                         </BackgroundGradient>
+                        </div>
                     </section>
                 </main>
             </div>

@@ -33,7 +33,7 @@ export function Header() {
                                 width={125}
                                 height={50}
                             />
-                            <div className="font-plex font-medium font-white text-xs py-1 px-1.5 bg-gradient-to-tr from-[#E40DB5] to-[#E851EB] rounded-lg">
+                            <div className="font-plex font-medium text-white text-xs py-1 px-1.5 bg-gradient-to-tr from-[#E40DB5] to-[#E851EB] rounded-lg">
                                 Beta
                             </div>
                         </div>

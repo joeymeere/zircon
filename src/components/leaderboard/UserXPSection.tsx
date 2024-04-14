@@ -2,6 +2,7 @@ import { FC } from "react";
 import { IconMedal2 } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Icon } from "../ui/evervault-card";
 
 interface TopXPProps {
   placing: number;
@@ -70,8 +71,12 @@ const TopXP: FC<TopXPProps> = ({ placing, user }) => {
 
 const TopXPSection: FC<TopXPSectionProps> = ({ users }) => {
   return (
-    <div className="border border-[#E851EB]/25 divide-y-2 divide-zinc-800 bg-black/25 max-[768px]:dark:bg-black/10 backdrop-blur-md px-6 rounded-lg">
-      <div className="flex-col divide-y divide-zinc-300/50 dark:divide-zinc-800/50">
+    <div className="border border-white/[0.2] bg-zinc-950 px-6">
+      <Icon className="absolute h-6 w-6 -top-3 -left-3 text-neutral-500" />
+      <Icon className="absolute h-6 w-6 -bottom-3 -left-3 text-neutral-500" />
+      <Icon className="absolute h-6 w-6 -top-3 -right-3 text-neutral-500" />
+      <Icon className="absolute h-6 w-6 -bottom-3 -right-3 text-neutral-500" />
+      <div className="flex-col divide-y divide-white/[0.2]">
         {users.map((user: any, i: number) => (
           <TopXP key={i} placing={i} user={user} />
         ))}

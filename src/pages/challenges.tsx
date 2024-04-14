@@ -9,6 +9,7 @@ import ChallengeCard from "@/components/ChallengeCard";
 import { Challenge } from "@/interfaces/challenge";
 import SEO from "@/components/SEO";
 import ChallengeGrid from "@/components/ChallengeGrid";
+import Link from "next/link";
 
 interface ChallengesProps {
     challenges: Challenge[],
@@ -80,17 +81,26 @@ export default function Challenges({ challenges, users }: ChallengesProps) {
                                 <Icon className="absolute h-6 w-6 -top-3 -right-3 text-neutral-500" />
                                 <Icon className="absolute h-6 w-6 -bottom-3 -right-3 text-neutral-500" />
 
-                                <h3 className="text-2xl font-plex font-semibold">Top Builders</h3>
+                                <div className="flex items-center justify-between">
+                                    <h3 className="text-2xl font-plex font-semibold text-white">Top Builders</h3>
+                                    <Link href="/leaderboard" passHref>
+                                        <button  
+                                            className={`shadow-[0_0_0_3px_#000000_inset] px-2 py-1 bg-transparent border border-white text-white rounded-lg font-plex font-semibold text-xs transform hover:-translate-y-1 transition duration-400`}
+                                        >
+                                            See All
+                                        </button>
+                                    </Link>
+                                </div>
 
                                 <div className="mt-6 flex-col space-y-4">
                                     {users.map((user: any, i: number) => (
                                         <div key={i} className="relative flex items-center justify-between bg-zinc-950 p-4 w-full h-full rounded-md border border-white/[0.2]">
                                             <div className="flex items-center gap-2">
                                                 <Image src={user.data.image} alt="PFP" width={30} height={30} className="w-8 h-8 rounded-full" />
-                                                <p className="font-plex font-medium">{user.data.username}</p>
+                                                <p className="font-plex font-medium text-white">{user.data.username}</p>
                                             </div>
                                             <div>
-                                                <p className="font-plex">{user.data.xp}{" "}
+                                                <p className="font-plex text-neutral-300">{user.data.xp}{" "}
                                                     <span className="text-xs text-neutral-500">XP</span>
                                                 </p>
                                             </div>

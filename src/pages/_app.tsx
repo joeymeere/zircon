@@ -86,6 +86,14 @@ export default function App({ Component, pageProps }: AppProps) {
 
         monaco.languages.typescript.javascriptDefaults.addExtraLib(
           spl,
+        );
+
+        const { data: anchor } = await axios.get(
+          "https://unpkg.com/@coral-xyz/anchor@0.29.0/dist/cjs/index.d.ts"
+        );
+
+        monaco.languages.typescript.javascriptDefaults.addExtraLib(
+          anchor,
         )
 
         const { data: axiosData } = await axios.get(
@@ -98,6 +106,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
         monaco.editor.createModel(web3js, "typescript");
         monaco.editor.createModel(spl, "typescript");
+        monaco.editor.createModel(anchor, "typescript");
         monaco.editor.createModel(axiosData, "typescript");
         console.log("Web3.js, SPL Token & Axios loaded.");
       }

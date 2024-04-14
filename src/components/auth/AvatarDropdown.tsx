@@ -51,7 +51,7 @@ const AvatarDropdown: FC<any> = () => {
                                 ) : null}
                             </div>
                         )}
-                        <IconChevronDown size={16} aria-hidden="true" />
+                        <IconChevronDown size={16} className='text-white' aria-hidden="true" />
                     </div>
                 </Menu.Button>
             </div>
