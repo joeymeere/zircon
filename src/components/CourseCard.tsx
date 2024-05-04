@@ -40,7 +40,7 @@ export default function CourseCard({ colors, title, description }: CourseCardPro
           </AnimatePresence>
           <div className="relative z-20">
             <div className="text-center group-hover/canvas-card:-translate-y-4 group-hover/canvas-card:opacity-0 transition duration-200 w-full  mx-auto flex items-center justify-center">
-              <IconCurrencySolana stroke={1} size={64} />
+              <IconCurrencySolana stroke={1} size={64} className="text-white" />
             </div>
             <h2 className="dark:text-white font-plex text-center text-2xl opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black mt-4  font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200">
               {title}

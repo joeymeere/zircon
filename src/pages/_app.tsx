@@ -1,4 +1,3 @@
-import { Toaster } from "@/components/ui/toaster";
 import { signIn, signOut } from "@/firebase";
 import { SolanaProviders } from "@/providers/SolanaProvider";
 import { SolanaSignInProvider } from "@/providers/SolanaSignInProvider";
@@ -7,6 +6,10 @@ import { useMonaco } from "@monaco-editor/react";
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import axios from "axios";
+import { getIDL } from "@joeymeere/dreamcast";
+import { Connection } from "@solana/web3.js";
+import { Toaster } from "@/components/ui/sonner";
+
 
 export default function App({ Component, pageProps }: AppProps) {
   const monaco = useMonaco();
@@ -104,10 +107,21 @@ export default function App({ Component, pageProps }: AppProps) {
           axiosData,
         );
 
+        /*
+        const { data: dreamcast } = await axios.get(
+          "https://unpkg.com/@joeymeere/dreamcast@1.0.5/src/index.d.ts"
+        );
+
+        monaco.languages.typescript.javascriptDefaults.addExtraLib(
+          dreamcast,
+        );
+        */
+
         monaco.editor.createModel(web3js, "typescript");
         monaco.editor.createModel(spl, "typescript");
         monaco.editor.createModel(anchor, "typescript");
         monaco.editor.createModel(axiosData, "typescript");
+        //monaco.editor.createModel(dreamcast, "typescript");
         console.log("Web3.js, SPL Token & Axios loaded.");
       }
     }
@@ -124,8 +138,8 @@ export default function App({ Component, pageProps }: AppProps) {
           onAuthCallback={signIn}
           signOut={signOut}
         >
-          <Component {...pageProps} />
           <Toaster />
+          <Component {...pageProps} />
         </SolanaSignInProvider>
       </SolanaProviders>
     </>

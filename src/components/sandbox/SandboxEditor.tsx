@@ -3,29 +3,35 @@
 //@ts-ignore
 import beautify from "prettify-js";
 import { useMonaco } from "@monaco-editor/react";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { runCode } from "@/utils/code/runCode";
 import hljs from "highlight.js";
 import javascript from 'highlight.js/lib/languages/javascript';
 import 'highlight.js/styles/default.css';
 import 'highlight.js/styles/github-dark.css';
 import { motion } from "framer-motion";
-import { IconBrandTypescript, IconScript, IconUpload } from "@tabler/icons-react";
+import { IconBrandTypescript, IconFileDescription, IconMapQuestion, IconScript, IconUpload, IconWriting } from "@tabler/icons-react";
 import CodeEditor from "../ui/editor";
 import { useToast } from "../ui/use-toast";
 import { useRouter } from "next/router";
+import SaveSnippetModal from "./SaveSnippetModal";
 
 hljs.configure({
     ignoreUnescapedHTML: true
 });
 hljs.registerLanguage('javascript', javascript);
 
-export default function SandboxEditor() {
+interface SandboxEditorProps {
+    code: string,
+    setCode: Dispatch<SetStateAction<string>>,
+}
+
+export default function SandboxEditor({ code, setCode }: SandboxEditorProps) {
     const monaco = useMonaco();
     const router = useRouter();
     const { toast } = useToast();
+    const [open, setOpen] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
-    const [code, setCode] = useState<string>(`const web3 = require(\"@solana/web3.js\");\nconst spl = require(\"@solana/spl-token\");\n\nasync function main() {\n\n};\n\nmain();`);
     const [output, setOutput] = useState<string>("");
     const [active, setActive] = useState<string>("run");
 
@@ -68,6 +74,8 @@ export default function SandboxEditor() {
     }
 
     return (
+        <>
+        <SaveSnippetModal open={open} setOpen={setOpen} code={code} />
         <div className="flex-col gap-2 h-full w-full overflow-y-auto overflow-x-scroll max-h-screen no-visible-scrollbar">
             <div className="flex gap-2 items-center justify-between p-2 bg-zinc-950 rounded-tl-md border-b-2 border-[#E851EB]/50">
                 <div className="flex gap-1 items-center justify-start">
@@ -88,10 +96,17 @@ export default function SandboxEditor() {
                         </span>
                     </button>
                     <button
+                        onClick={() => setOpen(true)}
                         className={`inline-flex gap-2 items-center justify-center shadow-[0_0_0_3px_#000000_inset] px-3 py-1.5 bg-transparent border border-white text-white rounded-lg font-semibold text-xs`}
                     >
                         <IconUpload stroke={1} className="w-4 h-4" />
                         Save
+                    </button>
+                    <button
+                        className={`inline-flex gap-2 items-center justify-center shadow-[0_0_0_3px_#000000_inset] px-3 py-1.5 bg-transparent border border-white text-white rounded-lg font-semibold text-xs`}
+                    >
+                        <IconMapQuestion stroke={1} className="w-4 h-4" />
+                        Help
                     </button>
                 </div>
             </div>
@@ -104,8 +119,9 @@ export default function SandboxEditor() {
                         <div className="flex items-center gap-4 justify-start">
                             <button
                                 onClick={() => setActive("run")}
-                                className={`px-3 py-1.5 rounded-md font-plex text-white font-semibold font-neutral-300 ${active == "run" ? "bg-[#E851EB]/50" : "hover:bg-[#E851EB]/25"} transition-colors`}
+                                className={`px-3 py-1.5 inline-flex gap-2 items-center rounded-md font-plex text-white font-semibold font-neutral-300 ${active == "run" ? "bg-[#E851EB]/50" : "hover:bg-[#E851EB]/25"} transition-colors`}
                             >
+                                <IconFileDescription size={16} />
                                 Output
                             </button>
                         </div>
@@ -143,5 +159,6 @@ export default function SandboxEditor() {
                 </div>
             </div>
         </div>
+        </>
     )
 }

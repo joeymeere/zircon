@@ -76,6 +76,7 @@ const TopXPSection: FC<TopXPSectionProps> = ({ users }) => {
       <Icon className="absolute h-6 w-6 -bottom-3 -left-3 text-neutral-500" />
       <Icon className="absolute h-6 w-6 -top-3 -right-3 text-neutral-500" />
       <Icon className="absolute h-6 w-6 -bottom-3 -right-3 text-neutral-500" />
+      
       <div className="flex-col divide-y divide-white/[0.2]">
         {users.map((user: any, i: number) => (
           <TopXP key={i} placing={i} user={user} />

@@ -13,7 +13,7 @@ import 'highlight.js/styles/default.css';
 import 'highlight.js/styles/github-dark.css';
 import { useToast } from "./ui/use-toast";
 import { motion } from "framer-motion";
-import { IconChecks, IconClock, IconScript, IconUpload } from "@tabler/icons-react";
+import { IconChecks, IconClock, IconFileDescription, IconQuestionMark, IconScript, IconUpload } from "@tabler/icons-react";
 import { addSolution } from "@/lib/post/addSolution";
 import { useSolanaSignIn } from "@/providers/SolanaAuthContext";
 import { useWallet } from "@solana/wallet-adapter-react";
@@ -114,13 +114,13 @@ export default function EditorWindow({ id, defaultName, solutionAttributes, hint
                 <div className="flex gap-1 items-center justify-start">
                     {correct ? (
                         <>
-                        <IconChecks size={16} className="text-green-600" />
-                        <p className="font-plex text-sm">Completed</p>
+                            <IconChecks size={16} className="text-green-600" />
+                            <p className="font-plex text-sm text-white">Completed</p>
                         </>
                     ) : (
                         <>
-                        <IconClock size={16} className="text-yellow-600" />
-                        <p className="font-plex text-sm">Pending</p>
+                            <IconClock size={16} className="text-yellow-600" />
+                            <p className="font-plex text-sm text-white">Pending</p>
                         </>
                     )}
                 </div>
@@ -189,14 +189,16 @@ export default function EditorWindow({ id, defaultName, solutionAttributes, hint
                         <div className="flex items-center gap-4 justify-start">
                             <button
                                 onClick={() => setActive("run")}
-                                className={`px-3 py-1.5 rounded-md font-plex font-semibold font-neutral-300 ${active == "run" ? "bg-[#E851EB]/50" : "hover:bg-[#E851EB]/25"} transition-colors`}
+                                className={`px-3 py-1.5 inline-flex gap-2 items-center rounded-md text-white font-plex font-semibold font-neutral-300 ${active == "run" ? "bg-[#E851EB]/50" : "hover:bg-[#E851EB]/25"} transition-colors`}
                             >
+                                <IconFileDescription size={16} />
                                 Output
                             </button>
                             <button
                                 onClick={() => setActive("hints")}
-                                className={`px-3 py-1.5 rounded-md font-plex font-semibold font-neutral-300 ${active == "hints" ? "bg-[#E851EB]/50" : "hover:bg-[#E851EB]/25"} transition-colors`}
+                                className={`px-3 py-1.5 inline-flex gap-2 items-center rounded-md text-white font-plex font-semibold font-neutral-300 ${active == "hints" ? "bg-[#E851EB]/50" : "hover:bg-[#E851EB]/25"} transition-colors`}
                             >
+                                <IconQuestionMark size={16} />
                                 Hints
                             </button>
                         </div>

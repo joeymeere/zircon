@@ -33,6 +33,7 @@ const config: Config = {
   },
   plugins: [
     require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
     addVariablesForColors,
     //@ts-ignore
     plugin(function ({ matchUtilities, theme }) {

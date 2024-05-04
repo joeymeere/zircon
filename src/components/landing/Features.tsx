@@ -39,7 +39,7 @@ export default function Features() {
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl sm:text-center">
                     <h2 className="w-fit mx-auto text-sm font-regular leading-7 bg-gradient-to-tr from-[#E40DB5] to-[#E851EB] py-1 px-3 rounded-full text-white">Learn, Challenge, Compete.</h2>
-                    <p className="mt-4 text-3xl font-semibold font-plex tracking-tight bg-gradient-to-br from-white to-white/25 bg-clip-text text-transparent sm:text-5xl">Build on Solana.</p>
+                    <p className="mt-4 pb-1 text-3xl font-semibold font-plex tracking-tight bg-gradient-to-br from-white to-white/25 bg-clip-text text-transparent sm:text-5xl">The Developer Dojo.</p>
                     <p className="mt-6 text-lg leading-8 font-plex text-neutral-500">
                         We make it simple for you to get started on Solana, with guided courses designed for blockchain beginners, and challenges to gauge your progress.
                     </p>

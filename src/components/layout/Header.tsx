@@ -8,11 +8,11 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/nav-menu";
 import SolanaAuthButtonFirebase from "../auth/SolanaAuthButtonFirebase";
 import { auth } from "@/firebase";
 import { motion } from "framer-motion";
+import UserMenu from "./UserMenu";
 
 export function Header() {
     const router = useRouter();
     const { scrolled } = useScroll(1);
-    const [open, setOpen] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState(false);
     const [active, setActive] = useState<string | null>(router.pathname);
 

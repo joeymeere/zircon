@@ -16,6 +16,7 @@ import { check76Credentials } from "@/lib/checks/check76Credentials";
 import { NotificationMetadata } from "@/interfaces/notification";
 import { UserMetadata } from "@/interfaces/user";
 import { useToast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 
 const nonceStr = (nonce: string) => `|| id=${nonce}`;
 export const signInMessage = (nonce: string, domain: string) =>
@@ -38,7 +39,6 @@ export const SolanaSignInProvider: FC<SolanaSignInProviderProps> = ({
     signOut,
 }) => {
     const { setShowModal } = useUnifiedWalletContext();
-    const { toast } = useToast();
     const router = useRouter();
     const { publicKey, signMessage, connect, wallet, connected, disconnect } =
         useWallet();
@@ -90,8 +90,7 @@ export const SolanaSignInProvider: FC<SolanaSignInProviderProps> = ({
         } catch (error: any) {
             setIsSigningIn(false);
             console.error(error);
-            toast({
-                title: "An Error Occurred.",
+            toast("An Error Occurred.", {
                 description: `${error?.message}`,
                 className: 'bg-zinc-950'
             });
@@ -117,8 +116,7 @@ export const SolanaSignInProvider: FC<SolanaSignInProviderProps> = ({
                         });
 
                         if (!shown) {
-                            toast({
-                                title: `💎 Welcome ${document.data().username}!`,
+                            toast(`💎 Welcome ${document.data().username}!`, {
                                 description: `We're glad you're here.`,
                                 className: 'bg-zinc-950'
                             });
