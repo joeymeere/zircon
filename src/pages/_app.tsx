@@ -107,21 +107,19 @@ export default function App({ Component, pageProps }: AppProps) {
           axiosData,
         );
 
-        /*
         const { data: dreamcast } = await axios.get(
-          "https://unpkg.com/@joeymeere/dreamcast@1.0.5/src/index.d.ts"
+          "https://unpkg.com/@joeymeere/dreamcast@1.1.0/src/index.d.ts"
         );
 
         monaco.languages.typescript.javascriptDefaults.addExtraLib(
           dreamcast,
         );
-        */
 
         monaco.editor.createModel(web3js, "typescript");
         monaco.editor.createModel(spl, "typescript");
         monaco.editor.createModel(anchor, "typescript");
         monaco.editor.createModel(axiosData, "typescript");
-        //monaco.editor.createModel(dreamcast, "typescript");
+        monaco.editor.createModel(dreamcast, "typescript");
         console.log("Web3.js, SPL Token & Axios loaded.");
       }
     }
