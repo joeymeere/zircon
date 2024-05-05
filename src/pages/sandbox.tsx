@@ -23,8 +23,8 @@ export default function Sandbox() {
           >
             <section className="pt-16 pb-8 w-full relative">
               <motion.h1
-                initial={{ opacity: 0.5, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0.5, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{
                   delay: 0.3,
                   duration: 0.8,
@@ -39,8 +39,8 @@ export default function Sandbox() {
                 Sandbox
               </motion.h1>
               <motion.p
-                initial={{ opacity: 0.5, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0.5, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{
                   delay: 0.3,
                   duration: 0.8,

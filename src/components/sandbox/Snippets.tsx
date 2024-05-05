@@ -7,6 +7,7 @@ import { db } from "@/firebase";
 import { timeAgo } from "@/lib/timeAgo";
 import { Dispatch, SetStateAction } from "react";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 interface SnippetsProps {
   code: string;
@@ -20,7 +21,16 @@ export default function Snippets({ code, setCode }: SnippetsProps) {
   );
 
   return (
-    <div className="relative mr-4 bg-zinc-950 flex-col space-y-4 border border-white/[0.2] p-4">
+    <motion.div
+      initial={{ opacity: 0.5, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        delay: 0.3,
+        duration: 0.8,
+        ease: "easeInOut",
+      }}
+      className="relative mr-4 bg-zinc-950 flex-col space-y-4 border border-white/[0.2] p-4"
+    >
       <Icon className="absolute h-6 w-6 -top-3 -left-3 text-neutral-500" />
       <Icon className="absolute h-6 w-6 -bottom-3 -left-3 text-neutral-500" />
       <Icon className="absolute h-6 w-6 -top-7 -right-3 text-neutral-500" />
@@ -30,15 +40,14 @@ export default function Snippets({ code, setCode }: SnippetsProps) {
           const prevCode = code;
           setCode(
             `const web3 = require(\"@solana/web3.js\");\nconst spl = require(\"@solana/spl-token\");\n\nasync function main() {\n\n};\n\nmain();`
-          )
+          );
           toast("💾 Code cleared!", {
             action: {
               label: "Undo",
               onClick: () => setCode(prevCode),
             },
           });
-        }
-        }
+        }}
         className="w-full flex items-center justify-start gap-4 px-4 py-3 rounded-md text-neutral-300 border border-white/[0.2] hover:border-white/[0.5] hover:text-white"
       >
         <IconPlus className="" />
@@ -108,6 +117,6 @@ export default function Snippets({ code, setCode }: SnippetsProps) {
           </p>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
