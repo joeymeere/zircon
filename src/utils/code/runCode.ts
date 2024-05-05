@@ -17,12 +17,16 @@ export async function runCode(code: string) {
 
         let libs = { web3, spl, dc, axios };
 
-        console.log(libs, modifiedCode);
-
         //const run = new Function("web3", "spl", "dc", 'return' + modifiedCode);
         let func = new Function(...Object.keys(libs), 'return ' + modifiedCode)(...Object.values(libs));
 
-        return await func(null, ...args);
+        let output = await func(null, ...args);
+
+        if (output) {
+            return output;
+        } else {
+            return new Error("An unexpected error has occurred.");
+        }
     } catch(err) {
         throw err;
     }
