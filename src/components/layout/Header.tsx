@@ -48,34 +48,14 @@ export function Header() {
                                     Challenges
                                 </motion.p>
                             </Link>
-                            <MenuItem setActive={setActive} active={active} item="Learn">
-                                <div className="text-sm grid grid-cols-2 gap-10 p-4">
-                                    <ProductItem
-                                        title="Courses"
-                                        href="/learn"
-                                        src="/zirconcover.png"
-                                        description="Guided courses for going from zero to one on Solana, by Zircon."
-                                    />
-                                    <ProductItem
-                                        title="SolDev"
-                                        href="https://soldev.app/"
-                                        src="/soldev.jpg"
-                                        description="Community content for all aspects of building on Solana."
-                                    />
-                                    <ProductItem
-                                        title="Cookbook"
-                                        href="https://solanacookbook.com/#contributing"
-                                        src="https://www.soldev.app/_next/image?url=https%3A%2F%2Fsolanacookbook.com%2Fcookbook-sharing-card.png&w=640&q=75"
-                                        description="Compendium of useful information for a Solana dev."
-                                    />
-                                    <ProductItem
-                                        title="Bootcamp"
-                                        href="https://www.soldev.app/library/playlist/solana-bootcamp-basics"
-                                        src="https://www.soldev.app/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2F0P8JeL3TURU%2Fmaxresdefault.jpg&w=640&q=75"
-                                        description="Learn how to build on Solana using this video series."
-                                    />
-                                </div>
-                            </MenuItem>
+                            <Link href={"/learn"} passHref>
+                                <motion.p
+                                    transition={{ duration: 0.3 }}
+                                    className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white hover:bg-gradient-to-tr from-[#E40DB5]/25 to-[#E851EB]/25 p-3 rounded-md"
+                                >
+                                    Learn
+                                </motion.p>
+                            </Link>
                             <Link href="/sandbox" passHref>
                                 <motion.p
                                     transition={{ duration: 0.3 }}

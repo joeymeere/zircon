@@ -24,6 +24,8 @@
     "@solana/wallet-adapter-react-ui": "^0.9.35",
     "@solana/wallet-adapter-wallets": "^0.19.32",
     "@solana/web3.js": "^1.91.1",
+    "@sqds/multisig": "^2.1.1",
+    "@sqds/sdk": "^2.0.4",
     "@tabler/icons-react": "^3.1.0",
     "@tailwindcss/forms": "^0.5.7",
     "@tsparticles/engine": "^3.3.0",

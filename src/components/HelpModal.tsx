@@ -68,28 +68,28 @@ export default function HelpModal({ open, setOpen }: HelpModalProps) {
                           <ul className="flex-col space-y-2 font-plex text-zinc-500">
                             <li>
                             ✅ Write your code in{" "}
-                              <code className="bg-zinc-900 p-0.5">function()</code>{" "}
+                              <code className="bg-zinc-900 p-0.5 text-sm">function()</code>{" "}
                               syntax.
                             </li>
                             <li>
                             ✅ Keep your core logic in a single{" "}
-                              <code className="bg-zinc-900 p-0.5">main</code>{" "}
+                              <code className="bg-zinc-900 p-0.5 text-sm">main</code>{" "}
                               function
                             </li>
                             <li>
-                            ✅{" "} <code className="bg-zinc-900 p-0.5">async / await</code>{" "}
+                            ✅{" "} <code className="bg-zinc-900 p-0.5 text-sm">async / await</code>{" "}
                               is supported
                             </li>
                             <li>
-                            ✅{" "} <code className="bg-zinc-900 p-0.5">@solana/web3.js</code>,{" "}
-                              <code className="bg-zinc-900 p-0.5">@solana/spl-token</code>,{" "}
-                              <code className="bg-zinc-900 p-0.5">@joeymeere/dreamcast</code> &{" "}
-                              <code className="bg-zinc-900 p-0.5">axios</code>{" "}
+                            ✅{" "} <code className="bg-zinc-900 p-0.5 text-sm">@solana/web3.js</code>,{" "}
+                              <code className="bg-zinc-900 p-0.5 text-sm">@solana/spl-token</code>,{" "}
+                              <code className="bg-zinc-900 p-0.5 text-sm">@joeymeere/dreamcast</code> &{" "}
+                              <code className="bg-zinc-900 p-0.5 text-sm">axios</code>{" "}
                               are the only supported packages
                             </li>
                             <li>
                             ✅ Use{" "}
-                              <code className="bg-zinc-900 p-0.5">require()</code>{" "}
+                              <code className="bg-zinc-900 p-0.5 text-sm">require()</code>{" "}
                               syntax for imports
                             </li>
                             <li>

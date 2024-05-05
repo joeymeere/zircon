@@ -4,16 +4,18 @@ export async function runCode(code: string) {
         const modifiedCode = code
             .replace(/const web3 = require\("@solana\/web3\.js"\);\s*/, '')
             .replace(/const spl = require\("@solana\/spl-token"\);\s*/, '')
-            .replace(/const dc = require\("@joeymeere\/dreamcast"\);\s*/, '');
+            .replace(/const dc = require\("@joeymeere\/dreamcast"\);\s*/, '')
+            .replace(/const axios = require\("axios"\);\s*/, '');
 
-        // Import necessary libraries asynchronously
-        const [web3, spl, dc] = await Promise.all([
+        // Import necessary libs async
+        const [web3, spl, dc, axios] = await Promise.all([
             import("@solana/web3.js"),
             import("@solana/spl-token"),
-            import("@joeymeere/dreamcast")
+            import("@joeymeere/dreamcast"),
+            import("axios")
         ]);
 
-        let libs = { web3, spl, dc };
+        let libs = { web3, spl, dc, axios };
 
         console.log(libs, modifiedCode);
 

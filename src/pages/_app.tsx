@@ -115,12 +115,22 @@ export default function App({ Component, pageProps }: AppProps) {
           dreamcast,
         );
 
+        // V3 SDK
+        const { data: sqds } = await axios.get(
+          "https://unpkg.com/@sqds/sdk@2.0.4/lib/sdk/src/index.d.ts"
+        );
+
+        monaco.languages.typescript.javascriptDefaults.addExtraLib(
+          sqds,
+        );
+
         monaco.editor.createModel(web3js, "typescript");
         monaco.editor.createModel(spl, "typescript");
         monaco.editor.createModel(anchor, "typescript");
         monaco.editor.createModel(axiosData, "typescript");
         monaco.editor.createModel(dreamcast, "typescript");
-        console.log("Web3.js, SPL Token & Axios loaded.");
+        monaco.editor.createModel(sqds, "typescript");
+        console.log("Libraries loaded.");
       }
     }
     getLibs();

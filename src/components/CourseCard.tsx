@@ -14,8 +14,8 @@ interface CourseCardProps {
 export default function CourseCard({ colors, title, description }: CourseCardProps) {
   return (
     <>
-      <div className="pt-20 flex flex-col lg:flex-row items-center justify-center w-full mx-auto">
-        <div className="border border-black/[0.2] group/canvas-card flex items-center justify-center dark:border-white/[0.2]  max-w-sm w-full mx-auto p-4 relative h-[30rem] relative">
+      <div className="flex flex-col lg:flex-row items-center justify-center w-full mx-auto">
+        <div className="border border-black/[0.2] group/canvas-card flex items-center justify-center dark:border-white/[0.2]  max-w-sm w-full mx-auto p-4 h-[20rem] relative">
           <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
           <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
           <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
