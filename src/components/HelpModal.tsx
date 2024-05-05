@@ -92,6 +92,9 @@ export default function HelpModal({ open, setOpen }: HelpModalProps) {
                               <code className="bg-zinc-900 p-0.5">require()</code>{" "}
                               syntax for imports
                             </li>
+                            <li>
+                            ✅ Return signatures must be JSON serializable
+                            </li>
                           </ul>
                         </div>
                       </div>
