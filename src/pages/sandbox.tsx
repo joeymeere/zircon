@@ -16,10 +16,10 @@ export default function Sandbox() {
         image="https://firebasestorage.googleapis.com/v0/b/zircon-ac0b5.appspot.com/o/zircon-og.png?alt=media&token=13867ad8-795e-4c7d-ae89-08b4bd253a5e"
       />
       <Layout>
-        <div className="h-[50rem] w-full dark:bg-black bg-white  dark:bg-dot-white/[0.3] bg-dot-black/[0.3] relative">
+        <div className="w-full dark:bg-black bg-white  dark:bg-dot-white/[0.3] bg-dot-black/[0.3] relative">
           <div className="absolute pointer-events-none inset-0 dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
           <main
-            className={`min-h-screen max-w-[1920px] mx-auto overflow-hidden px-10`}
+            className={`relative min-h-screen max-w-[1920px] mx-auto overflow-hidden px-10`}
           >
             <section className="pt-16 pb-8 w-full relative">
               <motion.h1
