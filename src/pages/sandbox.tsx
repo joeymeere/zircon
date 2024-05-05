@@ -30,7 +30,7 @@ export default function Sandbox() {
                   duration: 0.8,
                   ease: "easeInOut",
                 }}
-                className="inline-flex gap-2 items-center mt-8 bg-gradient-to-br from-white to-white/25 bg-clip-text text-3xl font-bold font-plex tracking-tight text-transparent text-left"
+                className="inline-flex gap-2 items-center mt-8 bg-gradient-to-br from-white via-white to-white/25 bg-clip-text text-3xl font-bold font-plex tracking-tight text-transparent text-left"
               >
                 <IconSandbox
                   size={28}
